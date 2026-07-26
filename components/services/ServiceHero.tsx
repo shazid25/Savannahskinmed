@@ -5,12 +5,13 @@ import BookAppointmentButton from '@/components/booking/BookAppointmentButton';
 import { ArrowRight } from '@/components/icons';
 
 type ServiceHeroProps = {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   intro?: string;
   image: string;
   imageAlt: string;
   position?: string;
+  hideButtons?: boolean;
 };
 
 export default function ServiceHero({
@@ -20,6 +21,7 @@ export default function ServiceHero({
   image,
   imageAlt,
   position = 'center',
+  hideButtons = false,
 }: ServiceHeroProps) {
   return (
     <section className="relative flex h-[690px] items-center overflow-hidden bg-[#b9bcc2] lg:h-[85vh] lg:min-h-[600px] lg:max-h-[880px]">
@@ -38,7 +40,7 @@ export default function ServiceHero({
 
       <div className="shell relative z-10 pt-20">
         <div className="mx-auto max-w-[780px] text-center">
-          <p className="eyebrow mb-4 animate-fadeUp text-white/90">{eyebrow}</p>
+          {eyebrow && <p className="eyebrow mb-4 animate-fadeUp text-white/90">{eyebrow}</p>}
           <h1 className="display-1 animate-fadeUp text-white text-shadow-hero [text-wrap:initial] [animation-delay:100ms]">
             {title}
           </h1>
@@ -49,19 +51,24 @@ export default function ServiceHero({
             </p>
           )}
 
-          <div className="mt-9 flex animate-fadeUp flex-wrap items-center justify-center gap-x-8 gap-y-4 [animation-delay:240ms]">
-            <BookAppointmentButton />
+          {!hideButtons && (
+            <div className="mt-9 flex animate-fadeUp flex-wrap items-center justify-center gap-x-8 gap-y-4 [animation-delay:240ms]">
+              <BookAppointmentButton />
 
-            <Link
-              href="/our-clinic"
-              className="group inline-flex items-center gap-4 font-sans text-[13px] font-medium uppercase tracking-widest2 text-white"
-            >
-              Our Clinic
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-navy transition-transform duration-300 group-hover:translate-x-1">
-                <ArrowRight className="h-3.5 w-3.5" />
-              </span>
-            </Link>
-          </div>
+              <Link
+                href="/our-clinic"
+                className="group inline-flex items-center gap-4 font-sans text-[13px] font-medium uppercase tracking-widest2 text-white"
+              >
+                Our Clinic
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-navy transition-transform duration-300 group-hover:translate-x-1">
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </Link>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
         </div>
       </div>
     </section>
