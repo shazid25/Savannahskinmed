@@ -43,7 +43,7 @@ export default function Footer() {
                       target="_blank"
                       rel="noreferrer noopener"
                       aria-label={social.label}
-                      className="grid h-9 w-9 place-items-center rounded-full bg-navy text-white transition-colors hover:bg-rose-deep"
+                      className="grid h-9 w-9 place-items-center rounded-full bg-navy text-white transition-colors duration-300 hover:bg-rose-deep"
                     >
                       <Icon className="h-[17px] w-[17px]" />
                     </a>
@@ -55,13 +55,13 @@ export default function Footer() {
             <ul className="mt-7 space-y-3 text-[14px]">
               <li className="flex items-center gap-3">
                 <MailIcon className="h-4 w-4 shrink-0 text-navy" />
-                <a href={site.emailHref} className="text-navy hover:text-rose-deep">
+                <a href={site.emailHref} className="text-navy transition-colors duration-300 hover:text-rose-deep">
                   {site.email}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <PhoneIcon className="h-4 w-4 shrink-0 text-navy" />
-                <a href={site.phoneHref} className="text-navy hover:text-rose-deep">
+                <a href={site.phoneHref} className="text-navy transition-colors duration-300 hover:text-rose-deep">
                   {site.phone}
                 </a>
               </li>
@@ -118,7 +118,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[14px] text-navy transition-colors hover:text-rose-deep"
+                    className="text-[14px] text-navy transition-colors duration-300 hover:text-rose-deep"
                   >
                     {link.label}
                   </Link>
@@ -135,7 +135,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[14px] text-navy transition-colors hover:text-rose-deep"
+                    className="text-[14px] text-navy transition-colors duration-300 hover:text-rose-deep"
                   >
                     {link.label}
                   </Link>
@@ -152,7 +152,7 @@ export default function Footer() {
             <span className="px-2.5 text-navy/30">|</span>
             All Rights Reserved
             <span className="px-2.5 text-navy/30">|</span>
-            <Link href="/privacy-policy" className="hover:text-rose-deep">
+            <Link href="/privacy-policy" className="transition-colors duration-300 hover:text-rose-deep">
               Privacy Policy
             </Link>
           </p>

@@ -7,7 +7,7 @@ export default function ExpertProfile() {
       <div className="shell">
         <Reveal>
           <div className="mx-auto flex max-w-[1000px] flex-col items-center gap-12 md:flex-row md:items-start md:gap-16">
-            <div className="relative shrink-0 overflow-hidden rounded-full border-8 border-cream shadow-xl md:order-1">
+            <div className="group relative shrink-0 overflow-hidden rounded-full border-8 border-cream shadow-xl transition-shadow duration-500 hover:shadow-2xl md:order-1">
               {/* Using a placeholder portrait image from the existing assets */}
               <div className="relative h-[280px] w-[280px] sm:h-[340px] sm:w-[340px] md:h-[400px] md:w-[400px]">
                 <Image
@@ -15,7 +15,7 @@ export default function ExpertProfile() {
                   alt="Rebecca Sproul - Licensed Aesthetician"
                   fill
                   sizes="(max-width: 768px) 340px, 400px"
-                  className="object-cover object-top"
+                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 />
               </div>
             </div>

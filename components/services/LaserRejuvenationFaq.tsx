@@ -54,7 +54,7 @@ export default function LaserRejuvenationFaq() {
                       </span>
                     </button>
                     <div
-                      className={`grid transition-all duration-300 ${
+                      className={`grid transition-all duration-500 ease-in-out ${
                         isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
                       }`}
                     >

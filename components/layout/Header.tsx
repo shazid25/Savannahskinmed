@@ -82,7 +82,7 @@ export default function Header() {
                     <Link
                       href={item.href}
                       aria-current={isActive(item.href) ? 'page' : undefined}
-                      className={`block rounded-md px-4 py-2 font-sans text-[13px] font-medium uppercase tracking-[0.16em] transition-colors ${
+                      className={`block rounded-md px-4 py-2 font-sans text-[13px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 ${
                         isActive(item.href)
                           ? 'text-white'
                           : 'text-white/85 hover:text-white'
@@ -106,7 +106,7 @@ export default function Header() {
                     aria-expanded={desktopOpen}
                     aria-haspopup="true"
                     onClick={() => setDesktopOpen((v) => !v)}
-                    className={`flex items-center gap-1.5 rounded-md px-4 py-2 font-sans text-[13px] font-medium uppercase tracking-[0.16em] transition-colors ${
+                    className={`flex items-center gap-1.5 rounded-md px-4 py-2 font-sans text-[13px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 ${
                       desktopOpen || isActive('/services')
                         ? 'text-white'
                         : 'text-white/85 hover:text-white'
@@ -132,7 +132,7 @@ export default function Header() {
                             <li key={service.href}>
                               <Link
                                 href={service.href}
-                                className={`group flex items-center justify-between gap-6 px-6 py-[15px] text-[16px] leading-snug text-navy transition-colors hover:text-rose-deep ${
+                                className={`group flex items-center justify-between gap-6 px-6 py-[15px] text-[16px] leading-snug text-navy transition-colors duration-300 hover:text-rose-deep ${
                                   i !== 0 ? 'border-t border-navy/10' : ''
                                 }`}
                               >
@@ -155,7 +155,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <a
             href={site.phoneHref}
-            className="hidden rounded-full bg-navy px-7 py-[13px] font-sans text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors hover:bg-navy-deep xl:inline-block"
+            className="hidden rounded-full bg-navy px-7 py-[13px] font-sans text-[12px] font-medium uppercase tracking-[0.16em] text-white transition-colors duration-300 hover:bg-navy-deep xl:inline-block"
           >
             Call: {site.phone}
           </a>

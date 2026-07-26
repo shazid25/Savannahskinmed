@@ -147,7 +147,7 @@ export default function BeforeAfter({
               className="pointer-events-none absolute inset-y-0 z-20 -ml-px w-[2px] bg-white"
               style={{ left: `${pos}%` }}
             >
-              <span className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-navy shadow-[0_4px_16px_rgba(0,0,0,0.22)] sm:h-[52px] sm:w-[52px]">
+              <span className={`absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-navy shadow-[0_4px_16px_rgba(0,0,0,0.22)] transition-all duration-300 sm:h-[52px] sm:w-[52px] ${holding ? 'scale-95 shadow-md' : hovering ? 'scale-110 shadow-xl' : 'scale-100'}`}>
                 <ChevronLeft className="-mr-[3px] h-4 w-4" />
                 <ChevronRight className="-ml-[3px] h-4 w-4" />
               </span>

@@ -28,7 +28,7 @@ const reviews = [
 function ReviewCard({ name, quote, className = '' }: (typeof reviews)[number] & { className?: string }) {
   return (
     <article
-      className={`flex h-full flex-col items-center rounded-2xl bg-white p-8 text-center md:items-start md:rounded-xl md:p-9 md:text-left ${className}`}
+      className={`flex h-full flex-col items-center rounded-2xl bg-white p-8 text-center transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl md:items-start md:rounded-xl md:p-9 md:text-left ${className}`}
     >
       <QuoteMark className="h-8 w-11 text-teal md:h-6 md:w-8" />
 
