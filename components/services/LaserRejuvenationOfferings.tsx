@@ -2,18 +2,20 @@ import Reveal from '@/components/ui/Reveal';
 
 export default function LaserRejuvenationOfferings() {
   return (
-    <section className="section bg-mist">
-      <div className="shell">
+    <section id="offerings" className="section bg-mist pt-0 lg:pt-0">
+      <div className="shell relative z-20 -mt-16 sm:-mt-24 lg:-mt-32">
         <Reveal>
           <div className="mx-auto max-w-[900px] rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
             <div className="text-center">
-              <div className="mx-auto mb-8 inline-flex rounded-full bg-cream px-6 py-2">
-                <span className="eyebrow text-navy">Treatments</span>
-              </div>
               <h2 className="display-3 mb-4 text-navy">Laser Skin Rejuvenation Offerings</h2>
-              <p className="mx-auto max-w-[700px] text-[16px] leading-[1.8]">
-                We offer a variety of advanced laser treatments to address your specific skin concerns, from subtle rejuvenation to deep resurfacing. Discover our state-of-the-art options:
+              <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8]">
+                We offer a number of state-of-the-art laser and non-laser procedures, designed to provide a range of solutions based on comfort level, price point, and number of desired treatments.
               </p>
+              <div className="mx-auto mt-8 inline-flex rounded-full bg-cream px-8 py-3">
+                <span className="font-sans text-[15px] font-bold tracking-widest text-navy uppercase">
+                  Treatments
+                </span>
+              </div>
             </div>
 
             <div className="mt-12 flex flex-col gap-8 text-[15.5px] leading-[1.8] text-ink">

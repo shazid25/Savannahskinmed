@@ -52,14 +52,14 @@ export default function ServiceHero({
           )}
 
           {!hideButtons && (
-            <div className="mt-9 flex animate-fadeUp flex-wrap items-center justify-center gap-x-8 gap-y-4 [animation-delay:240ms]">
-              <BookAppointmentButton />
+            <div className="mt-9 flex flex-col animate-fadeUp items-center justify-center gap-y-4 sm:flex-row sm:gap-x-8 [animation-delay:240ms]">
+              <BookAppointmentButton className="w-full sm:w-auto" />
 
               <Link
-                href="/our-clinic"
-                className="group inline-flex items-center gap-4 font-sans text-[13px] font-medium uppercase tracking-widest2 text-white"
+                href="#offerings"
+                className="group inline-flex w-full sm:w-auto items-center justify-center gap-4 font-sans text-[13px] font-medium uppercase tracking-widest2 text-white"
               >
-                Our Clinic
+                Learn More
                 <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-navy transition-transform duration-300 group-hover:translate-x-1">
                   <ArrowRight className="h-3.5 w-3.5" />
                 </span>

@@ -24,7 +24,7 @@ export default function LaserHairRemovalPage() {
       <ServiceHero
         eyebrow="SERVICES"
         title="Laser Hair Removal"
-        intro="Comfortable, effective laser hair reduction delivered by providers with decades of combined laser experience."
+        intro="State-of-the-art laser hair removal services designed to achieve a flawless, hair-free look."
         image="/images/banner-4-bg.jpg"
         imageAlt="A client receiving laser hair removal treatment"
         position="center"

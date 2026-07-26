@@ -31,7 +31,7 @@ export default function LaserSkinRejuvenationPage() {
       <ServiceHero
         eyebrow="SERVICES"
         title="Laser Skin Rejuvenation"
-        intro="Restore your confidence and glow. Laser treatments to smooth, clear, and revitalize your skin."
+        intro="Designed to refine, refresh, and restore your skin's youthful glow."
         image="/images/banner-7-bg.jpg"
         imageAlt="A client receiving laser skin rejuvenation treatment"
         position="center"

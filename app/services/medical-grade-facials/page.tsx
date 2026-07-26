@@ -25,7 +25,7 @@ export default function MedicalGradeFacialsPage() {
       <ServiceHero
         eyebrow="SERVICES"
         title="Medical-Grade Facials"
-        intro="Rejuvenate your skin with our customized treatments designed to address your specific needs."
+        intro="Revitalize your skin with advanced facial treatments designed to deliver lasting results."
         image="/images/image-mosaic-8-img.jpg"
         imageAlt="A client receiving a medical-grade facial"
         position="center"

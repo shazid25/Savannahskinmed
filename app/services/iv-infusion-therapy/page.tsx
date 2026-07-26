@@ -14,11 +14,10 @@ export default function IvInfusionTherapyPage() {
     <>
       <ServiceHero
         title="IV Infusion Therapy & Vitamin Injections"
-        intro="Hydration, vitamins and antioxidants delivered directly into the bloodstream for fast, efficient absorption."
+        intro="Provides an efficient and luxurious way to replenish your body with vital nutrients."
         image="/images/banner-13-bg.avif"
         imageAlt="IV Infusion Therapy & Vitamin Injections"
         position="center"
-        hideButtons={true}
       />
       
       <IvInfusionContent />
