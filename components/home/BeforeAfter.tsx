@@ -9,8 +9,19 @@ import { ChevronLeft, ChevronRight } from '@/components/icons';
 
 const AUTOPLAY_MS = 3000;
 
-/** Odd-numbered asset is the "before", the following even one is the "after". */
-const slides = [
+export type BeforeAfterSlide = {
+  before: number;
+  after: number;
+  procedure: string;
+};
+
+type BeforeAfterProps = {
+  title?: string;
+  eyebrow?: string;
+  slides?: BeforeAfterSlide[];
+};
+
+const defaultSlides: BeforeAfterSlide[] = [
   { before: 39, after: 40, procedure: 'Dysport' },
   { before: 41, after: 42, procedure: 'Dysport' },
   { before: 43, after: 44, procedure: 'Lip Flip' },
@@ -21,7 +32,11 @@ const slides = [
 
 const src = (n: number) => `/images/before-after-${n}-img.jpg`;
 
-export default function BeforeAfter() {
+export default function BeforeAfter({
+  title = 'Results You Can See, Confidence You Can Feel',
+  eyebrow = 'Before & After Procedures',
+  slides = defaultSlides,
+}: BeforeAfterProps) {
   const [index, setIndex] = useState(0);
   const [pos, setPos] = useState(50);
   // Autoplay holds while the pointer rests on the slider *or* while the
@@ -62,8 +77,8 @@ export default function BeforeAfter() {
       <div className="shell">
         <Reveal>
           <SectionHeading
-            eyebrow="Before &amp; After Procedures"
-            title="Results You Can See, Confidence You Can Feel"
+            eyebrow={eyebrow}
+            title={title}
           />
         </Reveal>
 
