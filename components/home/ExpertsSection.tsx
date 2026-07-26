@@ -17,23 +17,23 @@ export default function ExpertsSection() {
       </div>
 
       <div className="flex items-center bg-cream px-6 py-16 sm:px-10 lg:px-[86px] lg:py-20">
-        <Reveal className="max-w-[460px]">
+        <Reveal className="mx-auto max-w-[460px] text-center lg:mx-0 lg:text-left">
           <p className="eyebrow mb-4 text-rose-deep">Who We Are</p>
 
           <h2 className="display-2">Experts In Aesthetic Excellence</h2>
 
-          <p className="mt-6 text-[14.5px] leading-[1.9]">
+          <p className="mt-6 text-[16px] leading-[1.8] lg:text-[14.5px] lg:leading-[1.9]">
             Committed to enhancing your beauty and confidence through advanced aesthetic
             treatments.
           </p>
 
-          <p className="mt-5 text-[14.5px] leading-[1.9]">
+          <p className="mt-5 text-[16px] leading-[1.8] lg:text-[14.5px] lg:leading-[1.9]">
             Our licensed team uses years of clinical experience to develop a customized skin care
             plan tailored to your skin goals and comfort levels. Experience personalized skincare
             like never before.
           </p>
 
-          <ButtonLink href="/our-clinic" className="mt-9">
+          <ButtonLink href="/our-clinic" className="mt-9 w-full sm:w-auto">
             Our Experts
           </ButtonLink>
         </Reveal>

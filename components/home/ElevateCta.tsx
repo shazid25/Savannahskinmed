@@ -21,14 +21,14 @@ export default function ElevateCta() {
       />
 
       <div className="shell relative z-10 py-16">
-        <Reveal className="max-w-[520px]">
+        <Reveal className="mx-auto max-w-[520px] text-center lg:mx-0 lg:text-left">
           <h2 className="display-2 text-white text-shadow-hero">Elevate And Enhance</h2>
 
-          <p className="mt-5 max-w-[400px] text-[15px] leading-[1.85] text-white/95">
+          <p className="mx-auto mt-5 max-w-[400px] text-[17px] leading-[1.75] text-white text-shadow-hero lg:mx-0 lg:text-[15px] lg:leading-[1.85]">
             Start your journey toward a more radiant, youthful appearance.
           </p>
 
-          <ButtonLink href="/contact" className="mt-9">
+          <ButtonLink href="/contact" className="mt-9 w-full sm:w-auto">
             Book Appointment
           </ButtonLink>
         </Reveal>

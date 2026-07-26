@@ -35,8 +35,8 @@ export default function Hero() {
             skin.
           </p>
 
-          <div className="mt-9 flex animate-fadeUp flex-wrap items-center justify-center gap-x-8 gap-y-4 [animation-delay:240ms] lg:justify-start">
-            <BookAppointmentButton />
+          <div className="mt-9 flex animate-fadeUp flex-col sm:flex-row items-center justify-center gap-x-8 gap-y-6 [animation-delay:240ms] lg:justify-start">
+            <BookAppointmentButton className="w-full sm:w-auto" />
 
             <Link
               href="/services"

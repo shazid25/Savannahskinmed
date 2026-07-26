@@ -49,7 +49,7 @@ export default function OurClinicPage() {
       <section className="bg-white py-16 sm:py-20 lg:pb-[72px] lg:pt-[96px]">
         <div className="shell">
           <Reveal className="mx-auto max-w-[900px] text-center">
-            <p className="eyebrow mb-4 text-rose-deep">
+            <p className="eyebrow mb-4 text-navy">
               Welcome To Savannah Age Management Medicine
             </p>
 

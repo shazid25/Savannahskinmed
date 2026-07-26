@@ -37,7 +37,7 @@ export default function SectionHeading({
 
       {intro && (
         <p
-          className={`mt-5 text-[15px] leading-[1.85] ${
+          className={`mt-5 text-[16px] leading-[1.75] lg:text-[15px] lg:leading-[1.85] ${
             tone === 'white' ? 'text-white/85' : 'text-muted'
           } ${centered ? 'mx-auto max-w-[620px]' : ''}`}
         >
