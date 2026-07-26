@@ -19,6 +19,7 @@ type BeforeAfterProps = {
   title?: string;
   eyebrow?: string;
   slides?: BeforeAfterSlide[];
+  labelStyle?: 'bottom' | 'pill';
 };
 
 const defaultSlides: BeforeAfterSlide[] = [
@@ -36,6 +37,7 @@ export default function BeforeAfter({
   title = 'Results You Can See, Confidence You Can Feel',
   eyebrow = 'Before & After Procedures',
   slides = defaultSlides,
+  labelStyle = 'bottom',
 }: BeforeAfterProps) {
   const [index, setIndex] = useState(0);
   const [pos, setPos] = useState(50);
@@ -162,12 +164,25 @@ export default function BeforeAfter({
               <span className="whitespace-nowrap font-bold text-navy">{slide.procedure}</span>
             </span>
 
-            <span className="pointer-events-none absolute bottom-[6%] left-[6%] z-10 font-serif text-[22px] text-white text-shadow-hero sm:text-[30px]">
-              Before
-            </span>
-            <span className="pointer-events-none absolute bottom-[6%] right-[6%] z-10 font-serif text-[22px] text-white text-shadow-hero sm:text-[30px]">
-              After
-            </span>
+            {labelStyle === 'bottom' ? (
+              <>
+                <span className="pointer-events-none absolute bottom-[6%] left-[6%] z-10 font-serif text-[22px] text-white text-shadow-hero sm:text-[30px]">
+                  Before
+                </span>
+                <span className="pointer-events-none absolute bottom-[6%] right-[6%] z-10 font-serif text-[22px] text-white text-shadow-hero sm:text-[30px]">
+                  After
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="pointer-events-none absolute top-4 left-1/4 z-10 -translate-x-1/2 rounded-full bg-sage px-12 py-1 font-sans text-[14px] font-bold text-white shadow-md sm:top-6 sm:px-16 sm:py-1.5 sm:text-[16px]">
+                  Before
+                </span>
+                <span className="pointer-events-none absolute top-4 right-1/4 z-10 translate-x-1/2 rounded-full bg-rose-deep px-12 py-1 font-sans text-[14px] font-bold text-white shadow-md sm:top-6 sm:px-16 sm:py-1.5 sm:text-[16px]">
+                  After
+                </span>
+              </>
+            )}
 
             {/* Keyboard-accessible control for the divider */}
             <input
