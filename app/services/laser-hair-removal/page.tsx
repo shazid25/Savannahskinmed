@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const laserSlides: BeforeAfterSlide[] = [
-  { before: 49, after: 50, procedure: 'Underarms Laser Hair Removal' },
+  { before: 19, after: 20, procedure: 'Laser Hair Removal' },
 ];
 
 export default function LaserHairRemovalPage() {
@@ -25,7 +25,7 @@ export default function LaserHairRemovalPage() {
         eyebrow="SERVICES"
         title="Laser Hair Removal"
         intro="Comfortable, effective laser hair reduction delivered by providers with decades of combined laser experience."
-        image="/images/banner-13-bg.jpg"
+        image="/images/banner-4-bg.jpg"
         imageAlt="A client receiving laser hair removal treatment"
         position="center"
       />

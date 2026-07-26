@@ -3,7 +3,7 @@ import Reveal from '@/components/ui/Reveal';
 const leftColumn = [
   'Full Back',
   'Full Bikini',
-  'Full Face',
+  'Bikini Line',
   'Full Face And Neck',
   'Full Leg',
   'Buttocks',
@@ -15,6 +15,7 @@ const leftColumn = [
 const rightColumn = [
   'Half Back',
   'Forearms',
+  'Full Face',
   'Half Leg',
   'Underarms',
   'Lip',
