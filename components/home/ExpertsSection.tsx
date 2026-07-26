@@ -33,7 +33,7 @@ export default function ExpertsSection() {
             like never before.
           </p>
 
-          <ButtonLink href="/our-clinic" className="mt-9 w-full sm:w-auto">
+          <ButtonLink href="/our-clinic" className="mt-9">
             Our Experts
           </ButtonLink>
         </Reveal>
