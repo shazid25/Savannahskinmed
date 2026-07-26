@@ -15,7 +15,7 @@ export default function Hero() {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[66%_center] sm:object-[72%_center]"
+        className="object-cover object-[85%_center] sm:object-[72%_center]"
       />
 
       {/* The original banner runs "no-gradient" — keep this light, just enough
