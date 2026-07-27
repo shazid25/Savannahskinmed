@@ -76,16 +76,6 @@ export const serviceContent: ServiceContent[] = [
       'Because the best aesthetic results come from consistency rather than one-off treatments, membership is designed to keep you on plan.',
     ],
   },
-  {
-    slug: 'health-wellness-services',
-    title: 'Health & Wellness Services',
-    intro:
-      'Age management care that supports how you feel, not only how you look — from hormone balance to weight management.',
-    body: [
-      'Our health and wellness services look at the whole picture: energy, sleep, body composition, hormone balance and long-term vitality.',
-      'Care plans are built with you after a thorough consultation, and reviewed regularly as your goals and results evolve.',
-    ],
-  },
 ];
 
 export const getServiceContent = (slug: string) =>

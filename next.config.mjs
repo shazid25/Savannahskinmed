@@ -7,6 +7,15 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/services/health-wellness-services',
+        destination: 'https://www.agemanagementmed.com/',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
