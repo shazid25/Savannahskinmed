@@ -38,7 +38,7 @@ export default function ServiceHero({
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent" />
       <div className="absolute inset-0 bg-black/10" />
 
-      <div className="shell relative z-10 pt-20">
+      <div className="shell relative z-10 pt-20 pb-4 md:pb-6 lg:pb-8">
         <div className="mx-auto max-w-[780px] text-center">
           {eyebrow && <p className="eyebrow mb-4 animate-fadeUp text-white/90">{eyebrow}</p>}
           <h1 className="display-1 animate-fadeUp text-white text-shadow-hero [text-wrap:initial] [animation-delay:100ms]">
