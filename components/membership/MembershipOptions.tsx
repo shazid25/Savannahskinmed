@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import RequestButton from '@/components/booking/RequestButton';
 import Reveal from '@/components/ui/Reveal';
 import { ArrowRight } from '@/components/icons';
 
@@ -115,10 +115,7 @@ export default function MembershipOptions() {
         </div>
 
         <Reveal className="text-center">
-          <Link href="/contact" className="btn-navy group inline-flex items-center">
-            Request More Details
-            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
+          <RequestButton withArrow>Request More Details</RequestButton>
         </Reveal>
       </div>
     </section>

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Reveal from '@/components/ui/Reveal';
 
 export default function LaserRejuvenationOfferings() {
@@ -14,38 +15,24 @@ export default function LaserRejuvenationOfferings() {
               <div className="mx-auto mt-8 inline-flex rounded-full bg-cream px-8 py-3">
                 <span className="font-sans text-[15px] font-bold tracking-widest text-navy uppercase">
                   Treatments
-                </span>
-              </div>
-            </div>
+          <div className="rounded-[20px] bg-white p-8 sm:p-16 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+            <h2 className="font-serif text-[32px] sm:text-[42px] leading-tight text-navy">
+              Comprehensive Rejuvenation Services
+            </h2>
+            <div className="mt-6 h-[2px] w-[60px] bg-teal" />
 
             <div className="mt-12 flex flex-col gap-8 text-[15.5px] leading-[1.8] text-ink">
-              <div className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                <h3 className="font-sans text-[17px] font-bold text-navy">
-                  BBL (BroadBand Light) / Advanced IPL for face, chest and hands
-                </h3>
-                <p className="mt-2 text-muted">
-                  A gentler but highly effective option for treating sun damage, age spots, redness, and rosacea. BBL uses targeted light energy to break up pigment and visible blood vessels, resulting in a clearer, more even skin tone. This treatment requires minimal downtime.
-                </p>
-              </div>
-
-              <div className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                <h3 className="font-sans text-[17px] font-bold text-navy">
-                  Non-Ablative Laser Resurfacing
-                </h3>
-                <p className="mt-2 text-muted">
-                  This treatment targets the deeper layers of skin to stimulate collagen production without damaging the surface. It is excellent for reducing fine lines, improving skin texture, and minimizing acne scars. Non-ablative resurfacing offers a balanced approach with noticeable results and less downtime than ablative lasers.
-                </p>
-              </div>
-
-              <div className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
-                <h3 className="font-sans text-[17px] font-bold text-navy">
-                  CO2 Laser Resurfacing
-                </h3>
-                <p className="mt-2 text-muted">
-                  Our most powerful laser option, CO2 resurfacing provides dramatic results for deep wrinkles, severe sun damage, and significant acne scarring. This ablative laser removes thin layers of skin, promoting intense collagen regeneration. It requires more downtime but delivers the most transformative outcome.
-                </p>
-              </div>
-
+              {offerings.map((offering, i) => (
+                <div key={i} className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
+                  <h3 className="font-sans text-[17px] font-bold text-navy">
+                    {offering.title}
+                  </h3>
+                  <p className="mt-2 text-muted">
+                    {offering.description}
+                  </p>
+                </div>
+              ))}
+              
               <div className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
                 <h3 className="font-sans text-[17px] font-bold text-navy">
                   Microneedling
@@ -57,12 +44,12 @@ export default function LaserRejuvenationOfferings() {
             </div>
 
             <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
-              <span className="font-medium cursor-pointer hover:text-rose transition-colors">
+              <Link href="/services/injectables-wrinkle-prevention" className="font-medium cursor-pointer hover:text-rose transition-colors">
                 ← INJECTABLES & WRINKLE PREVENTION
-              </span>
-              <span className="font-medium cursor-pointer hover:text-rose transition-colors">
+              </Link>
+              <Link href="/services/medical-grade-facials" className="font-medium cursor-pointer hover:text-rose transition-colors">
                 MEDICAL-GRADE FACIALS →
-              </span>
+              </Link>
             </div>
           </div>
         </Reveal>

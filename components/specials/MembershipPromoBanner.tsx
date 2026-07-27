@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import ButtonLink from '@/components/ui/ButtonLink';
+import RequestButton from '@/components/booking/RequestButton';
 
 const bullets = [
   'Members-only pricing on popular treatments',
@@ -43,9 +43,9 @@ export default function MembershipPromoBanner() {
             ))}
           </ul>
 
-          <ButtonLink href="/services/aesthetic-membership-program" className="mt-9">
+          <RequestButton className="mt-9" withArrow>
             Request More Details
-          </ButtonLink>
+          </RequestButton>
         </div>
       </div>
     </div>

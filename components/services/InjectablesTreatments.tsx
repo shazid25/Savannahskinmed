@@ -1,5 +1,6 @@
-import Reveal from '@/components/ui/Reveal';
 import Link from 'next/link';
+import Reveal from '@/components/ui/Reveal';
+import BookAppointmentButton from '@/components/booking/BookAppointmentButton';
 
 export default function InjectablesTreatments() {
   return (
@@ -87,9 +88,9 @@ export default function InjectablesTreatments() {
               <Link href="/services/laser-hair-removal" className="font-medium hover:text-rose transition-colors">
                 ← LASER HAIR REMOVAL
               </Link>
-              <button className="rounded-full bg-navy px-8 py-3.5 text-white transition-colors hover:bg-navy-deep">
+              <BookAppointmentButton className="rounded-full bg-navy px-8 py-3.5 text-[13px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
                 BOOK APPOINTMENT
-              </button>
+              </BookAppointmentButton>
               <Link href="/services/laser-skin-rejuvenation" className="font-medium hover:text-rose transition-colors">
                 LASER SKIN REJUVENATION →
               </Link>

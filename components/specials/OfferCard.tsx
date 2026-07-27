@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import BookAppointmentButton from '@/components/booking/BookAppointmentButton';
+import ClaimButton from '@/components/booking/ClaimButton';
 import type { SpecialCard } from '@/lib/specialsData';
 
 const ctaClassName =
@@ -38,7 +38,9 @@ export default function OfferCard({ card }: { card: SpecialCard }) {
                 </div>
               ))}
             </div>
-            <BookAppointmentButton className={`mt-7 ${ctaClassName}`}>{card.cta}</BookAppointmentButton>
+            <ClaimButton className={`mt-7 ${ctaClassName}`} withArrow>
+              {card.cta}
+            </ClaimButton>
           </>
         ) : (
           <>
@@ -48,10 +50,13 @@ export default function OfferCard({ card }: { card: SpecialCard }) {
               </h4>
             )}
             <p className="text-[14.5px] leading-[1.75] text-muted">{card.description}</p>
-            <BookAppointmentButton className={`mt-7 ${ctaClassName}`}>{card.cta}</BookAppointmentButton>
+            <ClaimButton className={`mt-7 ${ctaClassName}`} withArrow>
+              {card.cta}
+            </ClaimButton>
           </>
         )}
       </div>
     </div>
   );
 }
+

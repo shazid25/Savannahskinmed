@@ -1,7 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
-
-import { ArrowRight } from '@/components/icons';
+import RequestButton from '@/components/booking/RequestButton';
 
 export default function MembershipHero() {
   return (
@@ -30,10 +28,7 @@ export default function MembershipHero() {
           </p>
 
           <div className="mt-9 flex flex-col animate-fadeUp items-center justify-center gap-y-6 sm:flex-row sm:gap-x-8 [animation-delay:240ms]">
-            <Link href="#membership-options" className="btn-navy group">
-              Request More Details
-              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+            <RequestButton withArrow>Request More Details</RequestButton>
           </div>
         </div>
       </div>
