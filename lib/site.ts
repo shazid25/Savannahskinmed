@@ -92,7 +92,7 @@ export const locations: Location[] = [
 ];
 
 export const socials = [
-  { label: 'Facebook', href: 'https://www.facebook.com/', icon: 'facebook' as const },
+  { label: 'Facebook', href: 'https://www.facebook.com/SavannahAgeManagementMedicine', icon: 'facebook' as const },
   { label: 'Instagram', href: 'https://www.instagram.com/', icon: 'instagram' as const },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/', icon: 'linkedin' as const },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/savannah-age-management-medicine/', icon: 'linkedin' as const },
 ];

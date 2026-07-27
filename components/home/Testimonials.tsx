@@ -1,16 +1,26 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import Reveal from '@/components/ui/Reveal';
 import { ChevronLeft, ChevronRight, GoogleGlyph, QuoteMark, StarIcon } from '@/components/icons';
 
 const reviews = [
   {
+    name: 'Rebecca G.',
+    quote:
+      'Thank you so much for a wonderful experience today! I have always been delighted with Rebecca’s personal approach and tailored procedures. I am excited to see the results of this photo facial. Thank you!',
+  },
+  {
+    name: 'Sandra D.',
+    quote:
+      "Today was my second treatment with Becca Spacek who is the aesthetician at Savannah Age Mgt in Pooler, Ga. Again I couldn't be more pleased with the efficiency and professionalism of each treatment. Becca exudes a great deal of enthusiasm for her work and I couldn't be happier.",
+  },
+  {
     name: 'Lisa B.',
     quote:
-      'I love coming here! I was excited to try laser hair removal for the first time and Becca was amazing! She explained the whole procedure and made sure I was comfortable the entire time. I also received a dermaplaning facial and it was top of the line!',
+      'I love coming here! I was excited to try laser hair removal for the first time and Becca was amazing! She explained the whole procedure and made sure I was comfortable the entire time. I also received a dermaplaning facial and it was top of the line! ...',
   },
   {
     name: 'Penny M.',
@@ -18,9 +28,9 @@ const reviews = [
       'I have had laser treatments with Becca for at least 16 years and would not go to anyone else. She is professional and very knowledgeable concerning lasers. I trust her 100%! The office is professional, clean and runs many specials.',
   },
   {
-    name: 'Rebecca G.',
+    name: 'Leigh Ann E.',
     quote:
-      'Thank you so much for a wonderful experience today! I have always been delighted with Rebecca’s personal approach and tailored procedures. I am excited to see the results of this photo facial. Thank you!',
+      "Rebecca is the best! She has helped me with my skincare regimen-amazing results! I've tried just about every cream, lotion, and potion. Nothing compares-Go see her! You'll love the results",
   },
 ];
 
@@ -55,11 +65,53 @@ function ReviewCard({ name, quote, className = '' }: (typeof reviews)[number] & 
 
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const rotate = (step: number) =>
-    setIndex((current) => (current + step + reviews.length) % reviews.length);
+  const scrollTo = (i: number) => {
+    if (!scrollRef.current) return;
+    const childWidth = (scrollRef.current.children[0] as HTMLElement)?.offsetWidth || 0;
+    const gap = 24; // gap-6 is 24px
+    scrollRef.current.scrollTo({ left: i * (childWidth + gap), behavior: 'smooth' });
+  };
 
-  const ordered = [...reviews.slice(index), ...reviews.slice(0, index)];
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (!scrollRef.current) return;
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      if (scrollLeft + clientWidth >= scrollWidth - 10) {
+        scrollTo(0);
+      } else {
+        scrollTo(index + 1);
+      }
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [index]);
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const childWidth = (scrollRef.current.children[0] as HTMLElement)?.offsetWidth || 0;
+    const gap = 24;
+    if (childWidth > 0) {
+      const newIndex = Math.round(scrollRef.current.scrollLeft / (childWidth + gap));
+      setIndex(newIndex);
+    }
+  };
+
+  const rotate = (step: number) => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    
+    // Check boundaries
+    if (step === -1 && index === 0) {
+      // jump to end
+      scrollTo(reviews.length - 1);
+    } else if (step === 1 && scrollLeft + clientWidth >= scrollWidth - 10) {
+      // jump to start
+      scrollTo(0);
+    } else {
+      scrollTo(index + step);
+    }
+  };
 
   return (
     <section className="pb-16 sm:pb-20 lg:pb-[104px]">
@@ -110,27 +162,25 @@ export default function Testimonials() {
             </div>
 
             <div
-              key={index}
-              className="mt-10 grid animate-fadeUp gap-6 md:grid-cols-2 lg:mt-14"
+              ref={scrollRef}
+              onScroll={handleScroll}
+              className="mt-10 grid grid-flow-col auto-cols-[100%] md:auto-cols-[calc(50%-12px)] lg:auto-cols-[calc(33.333333%-16px)] gap-6 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] lg:mt-14"
               aria-live="polite"
             >
-              {/* One card on phones, two from md — the second is hidden below. */}
-              {ordered.slice(0, 2).map((review, i) => (
-                <ReviewCard
-                  key={review.name}
-                  {...review}
-                  className={i === 1 ? 'hidden md:flex' : ''}
-                />
+              {reviews.map((review) => (
+                <div key={review.name} className="snap-start h-full">
+                  <ReviewCard {...review} />
+                </div>
               ))}
             </div>
 
-            {/* Progress dots — phones only */}
-            <div className="mt-8 flex justify-center gap-2 md:hidden">
+            {/* Progress dots */}
+            <div className="mt-8 flex justify-center gap-2">
               {reviews.map((review, i) => (
                 <button
                   key={review.name}
                   type="button"
-                  onClick={() => setIndex(i)}
+                  onClick={() => scrollTo(i)}
                   aria-label={`Show testimonial ${i + 1}`}
                   aria-current={i === index}
                   className={`h-[5px] rounded-full transition-all duration-300 ${
