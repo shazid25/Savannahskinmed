@@ -64,10 +64,9 @@ export default function Header() {
     href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   return (
-    /* Absolute, not fixed: the bar stays fully transparent over the hero and
-       scrolls away with it, so white links never sit on a white section. */
+    /* Fixed: the bar stays at the top of the viewport at all times. */
     <header
-      className={`absolute inset-x-0 top-0 z-50 transition-colors duration-300 bg-transparent`}
+      className={`fixed inset-x-0 top-0 z-50 bg-transparent`}
     >
       <div className="mx-auto flex h-[76px] w-full max-w-[1500px] items-center justify-between px-5 lg:h-[92px] lg:px-10">
         <Logo variant="light" />
