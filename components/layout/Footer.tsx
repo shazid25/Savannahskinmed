@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import Logo from './Logo';
-import { footerServices, locations, quickLinks, site, socials } from '@/lib/site';
+import { getFooterData } from '@/lib/data/footer';
 import {
   ClockIcon,
   FacebookIcon,
@@ -12,7 +12,7 @@ import {
   PinIcon,
 } from '@/components/icons';
 
-const socialIcons = {
+const socialIcons: Record<string, typeof FacebookIcon> = {
   facebook: FacebookIcon,
   instagram: InstagramIcon,
   linkedin: LinkedinIcon,
@@ -24,7 +24,9 @@ function ColumnHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function Footer() {
+export default async function Footer() {
+  const footer = await getFooterData();
+
   return (
     <footer className="bg-white pt-16 lg:pt-[104px]">
       <div className="shell">
@@ -34,8 +36,8 @@ export default function Footer() {
             <Logo variant="dark" />
 
             <ul className="mt-7 flex items-center gap-3">
-              {socials.map((social) => {
-                const Icon = socialIcons[social.icon];
+              {footer.socials.map((social) => {
+                const Icon = socialIcons[social.icon] ?? FacebookIcon;
                 return (
                   <li key={social.label}>
                     <a
@@ -55,14 +57,14 @@ export default function Footer() {
             <ul className="mt-7 space-y-3 text-[14px]">
               <li className="flex items-center gap-3">
                 <MailIcon className="h-4 w-4 shrink-0 text-navy" />
-                <a href={site.emailHref} className="text-navy transition-colors duration-300 hover:text-rose-deep">
-                  {site.email}
+                <a href={footer.site.emailHref} className="text-navy transition-colors duration-300 hover:text-rose-deep">
+                  {footer.site.email}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <PhoneIcon className="h-4 w-4 shrink-0 text-navy" />
-                <a href={site.phoneHref} className="text-navy transition-colors duration-300 hover:text-rose-deep">
-                  {site.phone}
+                <a href={footer.site.phoneHref} className="text-navy transition-colors duration-300 hover:text-rose-deep">
+                  {footer.site.phone}
                 </a>
               </li>
             </ul>
@@ -73,7 +75,7 @@ export default function Footer() {
             <ColumnHeading>Contact Info</ColumnHeading>
 
             <div className="space-y-7">
-              {locations.map((location) => (
+              {footer.locations.map((location) => (
                 <div key={location.city}>
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                     <p className="font-sans text-[14px] font-semibold text-navy">
@@ -88,7 +90,7 @@ export default function Footer() {
 
                   <p className="mt-2 flex items-start gap-2.5 text-[14px] text-navy">
                     <PinIcon className="mt-[3px] h-4 w-4 shrink-0" />
-                    <span>{location.address.join(', ')}</span>
+                    <span>{location.addressLines.join(', ')}</span>
                   </p>
 
                   <p className="mt-4 font-sans text-[13px] font-semibold text-rose-deep">
@@ -114,7 +116,7 @@ export default function Footer() {
           <div>
             <ColumnHeading>Quick Links</ColumnHeading>
             <ul className="space-y-[18px]">
-              {quickLinks.map((link) => (
+              {footer.quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -131,7 +133,7 @@ export default function Footer() {
           <div>
             <ColumnHeading>Services</ColumnHeading>
             <ul className="space-y-[18px]">
-              {footerServices.map((link) => (
+              {footer.footerServices.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -148,7 +150,7 @@ export default function Footer() {
         {/* ---------------- Legal bar ---------------- */}
         <div className="mt-[72px] border-t border-navy/10 py-8">
           <p className="text-center font-sans text-[11px] uppercase tracking-[0.08em] text-navy/70">
-            Copyright &copy; 2026 Savannah Age Management Medicine
+            {footer.site.copyrightText}
             <span className="px-2.5 text-navy/30">|</span>
             All Rights Reserved
             <span className="px-2.5 text-navy/30">|</span>

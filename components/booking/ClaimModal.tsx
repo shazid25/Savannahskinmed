@@ -4,10 +4,13 @@ import { createPortal } from 'react-dom';
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 
 import { CloseIcon } from '@/components/icons';
+import { submitClaim } from '@/app/actions/submissions';
 
 type ClaimModalProps = {
   open: boolean;
   onClose: () => void;
+  offerId?: string;
+  offerLabel?: string;
 };
 
 function Field({
@@ -39,9 +42,11 @@ function Field({
   );
 }
 
-export default function ClaimModal({ open, onClose }: ClaimModalProps) {
+export default function ClaimModal({ open, onClose, offerId, offerLabel }: ClaimModalProps) {
   const [mounted, setMounted] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -58,6 +63,7 @@ export default function ClaimModal({ open, onClose }: ClaimModalProps) {
       document.body.style.overflow = '';
       setTimeout(() => {
         setSent(false);
+        setError(null);
       }, 300);
     }
     return () => {
@@ -77,9 +83,20 @@ export default function ClaimModal({ open, onClose }: ClaimModalProps) {
 
   if (!mounted || !open) return null;
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    setError(null);
+    setSubmitting(true);
+    const formData = new FormData(e.currentTarget);
+    if (offerId) formData.set('offerId', offerId);
+    if (offerLabel) formData.set('offerLabel', offerLabel);
+    const result = await submitClaim(formData);
+    setSubmitting(false);
+    if (result.ok) {
+      setSent(true);
+    } else {
+      setError(result.error);
+    }
   };
 
   return createPortal(
@@ -129,11 +146,18 @@ export default function ClaimModal({ open, onClose }: ClaimModalProps) {
             <Field id="email" label="E-mail Address" type="email" autoComplete="email" />
             <Field id="phone" label="Phone" type="tel" autoComplete="tel" />
 
+            {error && (
+              <p role="alert" className="text-[13px] text-rose-light">
+                {error}
+              </p>
+            )}
+
             <button
               type="submit"
-              className="!mt-8 w-full rounded-full bg-teal px-8 py-[19px] font-sans text-[15px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark"
+              disabled={submitting}
+              className="!mt-8 w-full rounded-full bg-teal px-8 py-[19px] font-sans text-[15px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark disabled:opacity-60"
             >
-              Next Step
+              {submitting ? 'Sending…' : 'Next Step'}
             </button>
           </form>
         )}

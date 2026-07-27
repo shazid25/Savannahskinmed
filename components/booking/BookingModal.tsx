@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 
 import { CloseIcon } from '@/components/icons';
 import { footerServices } from '@/lib/site';
+import { submitBooking } from '@/app/actions/submissions';
 
 const LOCATIONS = ['Pooler / Savannah', 'Statesboro'];
 
@@ -91,6 +92,9 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
   const [step, setStep] = useState<1 | 2>(1);
   const [sent, setSent] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [stepOneData, setStepOneData] = useState<FormData | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -139,19 +143,35 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
     if (!open) {
       setStep(1);
       setSent(false);
+      setError(null);
+      setStepOneData(null);
     }
   }, [open]);
 
   if (!open || !mounted) return null;
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (step === 1) {
+      setStepOneData(new FormData(event.currentTarget));
       setStep(2);
       return;
     }
-    // No booking backend is wired up yet — acknowledge client-side.
-    setSent(true);
+
+    setError(null);
+    setSubmitting(true);
+    const stepTwoData = new FormData(event.currentTarget);
+    const merged = new FormData();
+    stepOneData?.forEach((value, key) => merged.set(key, value));
+    stepTwoData.forEach((value, key) => merged.set(key, value));
+
+    const result = await submitBooking(merged);
+    setSubmitting(false);
+    if (result.ok) {
+      setSent(true);
+    } else {
+      setError(result.error);
+    }
   };
 
   // Portalled to <body>: hero/reveal ancestors carry a CSS transform, which
@@ -247,11 +267,18 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
               </>
             )}
 
+            {error && (
+              <p role="alert" className="text-[13px] text-rose-light">
+                {error}
+              </p>
+            )}
+
             <button
               type="submit"
-              className="!mt-8 w-full rounded-full bg-teal px-8 py-[19px] font-sans text-[15px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark"
+              disabled={submitting}
+              className="!mt-8 w-full rounded-full bg-teal px-8 py-[19px] font-sans text-[15px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-teal-dark disabled:opacity-60"
             >
-              {step === 1 ? 'Next Step' : 'Request Appointment'}
+              {submitting ? 'Sending…' : step === 1 ? 'Next Step' : 'Request Appointment'}
             </button>
           </form>
         )}

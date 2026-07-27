@@ -1,22 +1,14 @@
 import type { Metadata } from 'next';
-import { Manrope, Playfair_Display } from 'next/font/google';
 
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
-import './globals.css';
+import { manrope, playfair } from '@/lib/fonts';
+import '../globals.css';
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-playfair',
-});
-
-// The live site renders body copy in Manrope.
-const manrope = Manrope({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-manrope',
-});
+// Safety net so the DB-backed Footer picks up admin edits (or a newly
+// connected database) within a few minutes even without an explicit
+// revalidatePath call.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.agemanagementmed.com'),

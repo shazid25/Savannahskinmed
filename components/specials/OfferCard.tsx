@@ -1,12 +1,14 @@
 import Image from 'next/image';
 
 import ClaimButton from '@/components/booking/ClaimButton';
-import type { SpecialCard } from '@/lib/specialsData';
+import type { SpecialCardData } from '@/lib/data/shape';
 
 const ctaClassName =
   'rounded-full bg-navy px-8 py-3 text-[12px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep';
 
-export default function OfferCard({ card }: { card: SpecialCard }) {
+export default function OfferCard({ card }: { card: SpecialCardData }) {
+  const offerLabel = card.title ?? card.headline ?? undefined;
+
   return (
     <div className="group overflow-hidden rounded-[18px] bg-white shadow-card transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-navy/15">
       <div className="relative aspect-[4/3] w-full overflow-hidden">
@@ -28,7 +30,7 @@ export default function OfferCard({ card }: { card: SpecialCard }) {
       </div>
 
       <div className="p-7 sm:p-8">
-        {card.variant === 'tiers' ? (
+        {card.variant === 'TIERS' ? (
           <>
             <div className="space-y-5">
               {card.tiers.map((tier) => (
@@ -38,7 +40,12 @@ export default function OfferCard({ card }: { card: SpecialCard }) {
                 </div>
               ))}
             </div>
-            <ClaimButton className={`mt-7 ${ctaClassName}`} withArrow>
+            <ClaimButton
+              className={`mt-7 ${ctaClassName}`}
+              withArrow
+              offerId={card.id}
+              offerLabel={offerLabel}
+            >
               {card.cta}
             </ClaimButton>
           </>
@@ -50,7 +57,12 @@ export default function OfferCard({ card }: { card: SpecialCard }) {
               </h4>
             )}
             <p className="text-[14.5px] leading-[1.75] text-muted">{card.description}</p>
-            <ClaimButton className={`mt-7 ${ctaClassName}`} withArrow>
+            <ClaimButton
+              className={`mt-7 ${ctaClassName}`}
+              withArrow
+              offerId={card.id}
+              offerLabel={offerLabel}
+            >
               {card.cta}
             </ClaimButton>
           </>
@@ -59,4 +71,3 @@ export default function OfferCard({ card }: { card: SpecialCard }) {
     </div>
   );
 }
-

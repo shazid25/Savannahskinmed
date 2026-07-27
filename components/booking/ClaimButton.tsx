@@ -17,6 +17,9 @@ type ClaimButtonProps = {
   variant?: Variant;
   className?: string;
   withArrow?: boolean;
+  /** Which special is being claimed, so the submission records it. */
+  offerId?: string;
+  offerLabel?: string;
 };
 
 export default function ClaimButton({
@@ -24,6 +27,8 @@ export default function ClaimButton({
   variant = 'navy',
   className = '',
   withArrow = false,
+  offerId,
+  offerLabel,
 }: ClaimButtonProps) {
   const [open, setOpen] = useState(false);
 
@@ -40,7 +45,12 @@ export default function ClaimButton({
         )}
       </button>
 
-      <ClaimModal open={open} onClose={() => setOpen(false)} />
+      <ClaimModal
+        open={open}
+        onClose={() => setOpen(false)}
+        offerId={offerId}
+        offerLabel={offerLabel}
+      />
     </>
   );
 }

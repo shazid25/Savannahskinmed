@@ -24,7 +24,7 @@ export default function ServiceHero({
   hideButtons = false,
 }: ServiceHeroProps) {
   return (
-    <section className="relative flex min-h-dvh items-center overflow-hidden bg-[#b9bcc2] sm:min-h-[690px] lg:min-h-[85vh] lg:max-h-[880px] py-28 sm:py-24 lg:py-32">
+    <section className="relative flex min-h-[480px] items-center overflow-hidden bg-[#b9bcc2] py-16 sm:min-h-[690px] sm:py-24 lg:min-h-[85vh] lg:max-h-[880px] lg:py-32">
       <Image
         src={image}
         alt={imageAlt}

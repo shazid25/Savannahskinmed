@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState, type FormEvent } from 'react';
 
 import Reveal from '@/components/ui/Reveal';
+import { submitContact } from '@/app/actions/submissions';
 
 const fields = [
   { name: 'firstName', placeholder: 'First Name', type: 'text', autoComplete: 'given-name' },
@@ -14,12 +15,22 @@ const fields = [
 
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    // No backend is wired up yet — acknowledge the submission client-side.
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSent(true);
-    event.currentTarget.reset();
+    setError(null);
+    setSubmitting(true);
+    const form = event.currentTarget;
+    const result = await submitContact(new FormData(form));
+    setSubmitting(false);
+    if (result.ok) {
+      setSent(true);
+      form.reset();
+    } else {
+      setError(result.error);
+    }
   };
 
   return (
@@ -82,10 +93,17 @@ export default function ContactForm() {
               <div className="mt-9 flex flex-col items-center gap-4">
                 <button
                   type="submit"
-                  className="rounded-full bg-navy px-10 py-[15px] font-sans text-[11px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-navy-deep"
+                  disabled={submitting}
+                  className="rounded-full bg-navy px-10 py-[15px] font-sans text-[11px] font-medium uppercase tracking-widest2 text-white transition-colors hover:bg-navy-deep disabled:opacity-60"
                 >
-                  Submit
+                  {submitting ? 'Sending…' : 'Submit'}
                 </button>
+
+                {error && (
+                  <p role="alert" className="text-[14px] text-white">
+                    {error}
+                  </p>
+                )}
 
                 {sent && (
                   <p role="status" className="text-[14px] text-white">
