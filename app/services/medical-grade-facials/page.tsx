@@ -26,7 +26,7 @@ export default function MedicalGradeFacialsPage() {
         eyebrow="SERVICES"
         title="Medical-Grade Facials"
         intro="Revitalize your skin with advanced facial treatments designed to deliver lasting results."
-        image="/images/image-mosaic-8-img.jpg"
+        image="/images/banner-14-bg.jpg"
         imageAlt="A client receiving a medical-grade facial"
         position="center"
       />
@@ -34,7 +34,7 @@ export default function MedicalGradeFacialsPage() {
       <OfferingsList />
       
       <BeforeAfter 
-        eyebrow="WHAT TO EXPECT BEFORE AND AFTER"
+        eyebrow="BEFORE & AFTER PROCEDURES"
         title="Results You Can See, Confidence You Can Feel"
         slides={facialSlides}
       />

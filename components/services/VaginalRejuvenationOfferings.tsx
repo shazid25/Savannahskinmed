@@ -3,53 +3,53 @@ import BookAppointmentButton from '@/components/booking/BookAppointmentButton';
 
 const offerings = [
   {
-    title: 'DiamondGlow® Hydrating Facial',
+    title: 'Vaginal Tightening & Incontinence Reduction',
     description:
-      'Experience a customizable, exfoliating treatment that deeply cleanses and infuses your skin with professional-grade SkinMedica® serums.',
+      'Increase vaginal tightness to reduce symptoms of incontinence, improving both physical function and quality of life.',
   },
   {
-    title: 'Dermaplaning Facial',
+    title: 'Elasticity & Strength Improvement',
     description:
-      'This mechanical exfoliation treatment gently removes the outer layer of dead skin cells and fine vellus hair (peach fuzz), leaving your skin instantly smoother and brighter. Our Dermaplaning Facial also includes a customized chemical peel, hydrojelly mask, and LED light therapy to maximize your glowing results.',
+      'Restore vaginal tone, enhance strength, and rebuild tissue elasticity for a firmer, more youthful appearance.',
   },
   {
-    title: 'PRP Microneedling',
+    title: 'Reduction Of Loose Skin',
     description:
-      'Combine the benefits of microneedling with Platelet-Rich Plasma (PRP), which utilizes the growth factors in your own blood to significantly accelerate healing and enhance collagen production.',
+      'Effectively reduce the appearance of loose skin for a smoother and firmer vaginal area.',
   },
   {
-    title: 'Microneedling + Exosome Serum',
+    title: 'Vaginal Dryness Treatment',
     description:
-      'Enhance your microneedling results with exosome serum, the latest innovation in regenerative aesthetics, which speeds up healing and significantly amplifies collagen production.',
+      'Help alleviate dryness and restore comfort and moisture for a more pleasant, natural sensation.',
   },
   {
-    title: 'Microneedling with Hyaluronic Acid',
+    title: 'Improved Vaginal Sensation',
     description:
-      'This standard microneedling treatment creates controlled micro-injuries to stimulate collagen production, paired with a hydrating hyaluronic acid serum that penetrates deeply for plumper, smoother skin. Includes an aftercare kit for optimal recovery.',
+      'Enhance sensation, improving sexual comfort and intimacy, restoring confidence and pleasure.',
   },
 ];
 
-export default function OfferingsList() {
+export default function VaginalRejuvenationOfferings() {
   return (
     <section id="offerings" className="section bg-mist pt-0 lg:pt-0">
       <div className="shell relative z-20 -mt-16 sm:-mt-24 lg:-mt-32">
         <Reveal>
           <div className="mx-auto max-w-[900px] rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-14 lg:p-16">
             <div className="text-center">
-              <h2 className="display-3 mb-4 text-navy">Medical-Grade Facials Offerings</h2>
+              <h2 className="display-3 mb-4 text-navy">Vaginal Rejuvenation Offerings</h2>
               <p className="mx-auto max-w-[600px] text-[16px] leading-[1.8] text-[#555a64]">
-                Discover advanced facials tailored to your skin's unique needs at transparent prices.
+                In-office rejuvenation treatments help stimulate blood flow, regeneration in the vaginal region. Treatment is delivered using a small wand, which is inserted into the vagina and gently rotated, delivering pulses to the surrounding tissues.
               </p>
               <div className="mx-auto mt-8 inline-flex rounded-full bg-cream px-8 py-3">
-                <span className="font-sans text-[15px] font-bold tracking-widest text-navy uppercase">
-                  Treatments
+                <span className="font-sans text-[15px] font-bold tracking-widest text-navy">
+                  Vaginal rejuvenation offers a variety of benefits, including the following:
                 </span>
               </div>
             </div>
 
-            <div className="mt-12 flex flex-col gap-8 text-[15.5px] leading-[1.8] text-ink">
+            <div className="mt-12 flex flex-col gap-8 text-[15.5px] leading-[1.8] text-ink text-center md:text-left">
               {offerings.map((offering, i) => (
-                <div key={i} className="relative pl-6 before:absolute before:left-0 before:top-2.5 before:h-[2px] before:w-3 before:bg-teal">
+                <div key={i}>
                   <h3 className="font-sans text-[17px] font-bold text-navy">
                     {offering.title}
                   </h3>
@@ -68,7 +68,7 @@ export default function OfferingsList() {
                 BOOK APPOINTMENT
               </BookAppointmentButton>
               <span className="font-medium cursor-pointer hover:text-rose transition-colors">
-                INJECTABLES &amp; WRINKLE PREVENTION &rarr;
+                MEDICAL-GRADE FACIALS &rarr;
               </span>
             </div>
           </div>

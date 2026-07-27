@@ -20,7 +20,7 @@ const faqs: FaqItem[] = [
     answer: 'These facials work by deeply exfoliating the skin, extracting impurities, and infusing targeted serums. Depending on the specific treatment, they can also stimulate collagen production, improve cellular turnover, and enhance the absorption of active ingredients.',
   },
   {
-    question: 'What Can Be Treated With A Medical-Grade Facial?',
+    question: 'Who Can Be Treated With Medical-Grade Facials?',
     answer: 'They can treat a wide range of concerns including acne, hyperpigmentation, fine lines, uneven texture, dullness, and rosacea. We customize the treatment based on your unique skin profile.',
   },
 ];
@@ -37,16 +37,17 @@ export default function FaqSection() {
 
         <Reveal>
           <div className="mx-auto mt-12 max-w-[900px] rounded-[32px] bg-white p-8 shadow-[0_12px_40px_-16px_rgba(19,40,92,0.1)] sm:p-12">
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col">
               {faqs.map((faq, idx) => {
                 const isOpen = openIndex === idx;
+                const isLast = idx === faqs.length - 1;
                 return (
-                  <div key={idx} className="group">
+                  <div key={idx} className={`group py-6 ${!isLast ? 'border-b border-haze' : ''}`}>
                     <button
                       onClick={() => setOpenIndex(isOpen ? null : idx)}
-                      className="flex w-full items-start text-left"
+                      className="flex w-full items-center text-left"
                     >
-                      <span className={`mt-1 flex h-6 w-6 shrink-0 items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-90 text-rose' : 'text-navy'}`}>
+                      <span className={`flex h-6 w-6 shrink-0 items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-90 text-rose' : 'text-navy'}`}>
                         <ChevronRight className="h-4 w-4" />
                       </span>
                       <span className="ml-4 font-serif text-[20px] text-navy sm:text-[22px]">
