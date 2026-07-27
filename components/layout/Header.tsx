@@ -134,8 +134,14 @@ export default function Header() {
                             <li key={service.href}>
                               <Link
                                 href={service.href}
-                                className={`group flex items-center justify-between gap-6 px-6 py-[15px] text-[16px] leading-snug text-navy transition-colors duration-300 hover:text-rose-deep ${
+                                target={service.href.startsWith('http') ? '_blank' : undefined}
+                                rel={service.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                className={`group flex items-center justify-between gap-6 px-6 py-[15px] text-[16px] leading-snug transition-colors duration-300 hover:text-rose-deep ${
                                   i !== 0 ? 'border-t border-navy/10' : ''
+                                } ${
+                                  service.label === 'Health & Wellness Services' 
+                                    ? 'bg-cream/40 font-semibold text-navy' 
+                                    : 'text-navy'
                                 }`}
                               >
                                 <span>{service.label}</span>
@@ -249,7 +255,13 @@ export default function Header() {
                             <li key={service.href}>
                               <Link
                                 href={service.href}
-                                className="font-sans text-[14px] text-navy/80 hover:text-navy"
+                                target={service.href.startsWith('http') ? '_blank' : undefined}
+                                rel={service.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                className={`block font-sans text-[14px] transition-colors ${
+                                  service.label === 'Health & Wellness Services'
+                                    ? 'font-semibold text-navy'
+                                    : 'text-navy/80 hover:text-navy'
+                                }`}
                               >
                                 {service.label}
                               </Link>
