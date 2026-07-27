@@ -22,7 +22,7 @@ export const services: ServiceLink[] = [
   { label: 'Vaginal Rejuvenation', href: '/services/vaginal-rejuvenation' },
   { label: 'Aesthetic Membership Program', href: '/services/aesthetic-membership-program' },
   { label: 'Aesthetic Specials', href: '/aesthetic-specials' },
-  { label: 'Health & Wellness Services', href: '/services/health-wellness-services' },
+  { label: 'Health & Wellness Services', href: 'https://www.agemanagementmed.com/' },
 ];
 
 export const primaryNav = [
@@ -50,7 +50,7 @@ export const footerServices: ServiceLink[] = [
   { label: 'IV Infusion Therapy & Vitamin Injections', href: '/services/iv-infusion-therapy' },
   { label: 'Vaginal Rejuvenation', href: '/services/vaginal-rejuvenation' },
   { label: 'Aesthetic Membership Program', href: '/services/aesthetic-membership-program' },
-  { label: 'Health & Wellness Services', href: '/services/health-wellness-services' },
+  { label: 'Health & Wellness Services', href: 'https://www.agemanagementmed.com/' },
 ];
 
 export type Location = {
