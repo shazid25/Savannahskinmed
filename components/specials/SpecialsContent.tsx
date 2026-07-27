@@ -55,8 +55,8 @@ export default function SpecialsContent() {
         </Reveal>
 
         <div className="grid gap-8 sm:grid-cols-2">
-          {visibleCards.map((card) => (
-            <Reveal key={card.id}>
+          {visibleCards.map((card, i) => (
+            <Reveal key={card.id} delay={(i % 2) * 90}>
               <OfferCard card={card} />
             </Reveal>
           ))}

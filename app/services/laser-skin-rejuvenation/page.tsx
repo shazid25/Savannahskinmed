@@ -4,7 +4,7 @@ import ServiceHero from '@/components/services/ServiceHero';
 import LaserRejuvenationOfferings from '@/components/services/LaserRejuvenationOfferings';
 import LaserRejuvenationConsultation from '@/components/services/LaserRejuvenationConsultation';
 import BeforeAfter, { BeforeAfterSlide } from '@/components/home/BeforeAfter';
-import LaserRejuvenationFaq from '@/components/services/LaserRejuvenationFaq';
+import FaqAccordion, { type FaqItem } from '@/components/services/FaqAccordion';
 import ExpertProfile from '@/components/services/ExpertProfile';
 import Testimonials from '@/components/home/Testimonials';
 import ElevateCta from '@/components/home/ElevateCta';
@@ -23,6 +23,24 @@ const laserRejuvenationSlides: BeforeAfterSlide[] = [
   { before: 29, after: 30, procedure: 'Non Ablative Laser - Hyperpigmentation' },
   { before: 31, after: 32, procedure: 'Microneedling' },
   { before: 33, after: 34, procedure: 'Microneedling' },
+];
+
+const laserRejuvenationFaqs: FaqItem[] = [
+  {
+    question: 'What is Laser Skin Rejuvenation?',
+    answer:
+      'Laser skin rejuvenation refers to a variety of non-surgical treatments that use laser light energy to improve the appearance of the skin. These treatments can target specific concerns like sun damage, wrinkles, acne scars, and uneven pigmentation by either removing damaged outer layers of skin or stimulating collagen production beneath the surface.',
+  },
+  {
+    question: 'What Is The Downtime For Laser Treatments?',
+    answer:
+      'The downtime varies significantly depending on the specific laser used. Non-ablative lasers often have minimal to no downtime, with some temporary redness. Ablative lasers (like CO2), which offer more dramatic results, require more downtime as the skin heals, typically ranging from a few days to a week or more of recovery.',
+  },
+  {
+    question: 'Is Laser Skin Rejuvenation Painful?',
+    answer:
+      'Most patients tolerate laser treatments well. We use topical numbing creams and specialized cooling devices to ensure your comfort during the procedure. The sensation is often described as a warm prickling or the snapping of a rubber band against the skin. We will discuss pain management options tailored to your specific treatment during your consultation.',
+  },
 ];
 
 export default function LaserSkinRejuvenationPage() {
@@ -48,7 +66,7 @@ export default function LaserSkinRejuvenationPage() {
         labelStyle="bottom"
       />
       
-      <LaserRejuvenationFaq />
+      <FaqAccordion faqs={laserRejuvenationFaqs} noTopPadding />
       
       <ExpertProfile />
       

@@ -1,5 +1,6 @@
 import ButtonLink from '@/components/ui/ButtonLink';
 import PageHero from '@/components/ui/PageHero';
+import Reveal from '@/components/ui/Reveal';
 
 type SimplePageProps = {
   title: string;
@@ -34,7 +35,7 @@ export default function SimplePage({
 
       <section className="section bg-white">
         <div className="shell-narrow">
-          <div className="mx-auto max-w-[760px]">
+          <Reveal className="mx-auto max-w-[760px]">
             {body.map((paragraph) => (
               <p key={paragraph} className="mb-6 text-[15px] leading-[1.9] last:mb-0">
                 {paragraph}
@@ -44,7 +45,7 @@ export default function SimplePage({
             <div className="mt-10">
               <ButtonLink href={cta.href}>{cta.label}</ButtonLink>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

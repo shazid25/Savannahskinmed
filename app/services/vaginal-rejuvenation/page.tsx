@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import ServiceHero from '@/components/services/ServiceHero';
 import VaginalRejuvenationOfferings from '@/components/services/VaginalRejuvenationOfferings';
 import DrCollinsProfile from '@/components/services/DrCollinsProfile';
+import Testimonials from '@/components/home/Testimonials';
 import ElevateCta from '@/components/home/ElevateCta';
 
 export const metadata: Metadata = {
@@ -26,7 +27,9 @@ export default function VaginalRejuvenationPage() {
       <VaginalRejuvenationOfferings />
       
       <DrCollinsProfile />
-      
+
+      <Testimonials />
+
       <ElevateCta />
     </>
   );
