@@ -26,7 +26,7 @@ export async function createLocationAction(formData: FormData) {
       city: String(formData.get('city') || ''),
       badge: String(formData.get('badge') || '') || null,
       addressLines,
-      sortOrder: Number(formData.get('sortOrder') || 0),
+      sortOrder: Math.max(0, Number(formData.get('sortOrder') || 1) - 1),
     },
   });
   revalidatePublicPages();
@@ -47,7 +47,7 @@ export async function updateLocationAction(formData: FormData) {
       city: String(formData.get('city') || ''),
       badge: String(formData.get('badge') || '') || null,
       addressLines,
-      sortOrder: Number(formData.get('sortOrder') || 0),
+      sortOrder: Math.max(0, Number(formData.get('sortOrder') || 1) - 1),
     },
   });
   revalidatePublicPages();
@@ -71,7 +71,7 @@ export async function createLocationHourAction(formData: FormData) {
       kind: String(formData.get('kind')) === 'SHORT' ? HoursKind.SHORT : HoursKind.FULL,
       days: String(formData.get('days') || ''),
       time: String(formData.get('time') || ''),
-      sortOrder: Number(formData.get('sortOrder') || 0),
+      sortOrder: Math.max(0, Number(formData.get('sortOrder') || 1) - 1),
     },
   });
   revalidatePublicPages();
@@ -87,7 +87,7 @@ export async function updateLocationHourAction(formData: FormData) {
       kind: String(formData.get('kind')) === 'SHORT' ? HoursKind.SHORT : HoursKind.FULL,
       days: String(formData.get('days') || ''),
       time: String(formData.get('time') || ''),
-      sortOrder: Number(formData.get('sortOrder') || 0),
+      sortOrder: Math.max(0, Number(formData.get('sortOrder') || 1) - 1),
     },
   });
   revalidatePublicPages();
@@ -114,7 +114,7 @@ export async function createFooterLinkAction(formData: FormData) {
         : FooterLinkGroup.QUICK_LINK,
       label: String(formData.get('label') || ''),
       href: String(formData.get('href') || ''),
-      sortOrder: Number(formData.get('sortOrder') || 0),
+      sortOrder: Math.max(0, Number(formData.get('sortOrder') || 1) - 1),
     },
   });
   revalidatePublicPages();
@@ -129,7 +129,7 @@ export async function updateFooterLinkAction(formData: FormData) {
     data: {
       label: String(formData.get('label') || ''),
       href: String(formData.get('href') || ''),
-      sortOrder: Number(formData.get('sortOrder') || 0),
+      sortOrder: Math.max(0, Number(formData.get('sortOrder') || 1) - 1),
     },
   });
   revalidatePublicPages();

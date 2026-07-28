@@ -74,7 +74,7 @@ export default async function SiteContentPage() {
                   label="Order"
                   name="sortOrder"
                   type="number"
-                  defaultValue={String(location.sortOrder)}
+                  defaultValue={String(location.sortOrder + 1)}
                 />
                 <div className="flex items-end gap-2">
                   <button type="submit" className={smallBtn}>
@@ -105,7 +105,7 @@ export default async function SiteContentPage() {
                       </div>
                       <Field label="Days" name="days" defaultValue={h.days} />
                       <Field label="Time" name="time" defaultValue={h.time} />
-                      <Field label="Order" name="sortOrder" type="number" defaultValue={String(h.sortOrder)} />
+                      <Field label="Order" name="sortOrder" type="number" defaultValue={String(h.sortOrder + 1)} />
                       <button type="submit" className={smallBtn}>
                         Save
                       </button>
@@ -130,7 +130,7 @@ export default async function SiteContentPage() {
                   </div>
                   <Field label="Days" name="days" placeholder="Mon to Thu:" />
                   <Field label="Time" name="time" placeholder="9:00 AM - 5:00 PM" />
-                  <Field label="Order" name="sortOrder" type="number" defaultValue="0" />
+                  <Field label="Order" name="sortOrder" type="number" defaultValue="1" />
                   <button type="submit" className={smallBtn}>
                     Add Hours Row
                   </button>
@@ -144,7 +144,7 @@ export default async function SiteContentPage() {
           <Field label="City" name="city" />
           <Field label="Badge (optional)" name="badge" />
           <Field label="Address lines (one per line)" name="addressLines" as="textarea" className="sm:col-span-2" />
-          <Field label="Order" name="sortOrder" type="number" defaultValue="0" />
+          <Field label="Order" name="sortOrder" type="number" defaultValue="1" />
           <div className="flex items-end">
             <button type="submit" className={smallBtn}>
               Add Location
@@ -199,7 +199,7 @@ function FooterLinkGroupEditor({
           <input type="hidden" name="id" value={link.id} />
           <Field label="Label" name="label" defaultValue={link.label} />
           <Field label="Href" name="href" defaultValue={link.href} />
-          <Field label="Order" name="sortOrder" type="number" defaultValue={String(link.sortOrder)} />
+          <Field label="Order" name="sortOrder" type="number" defaultValue={String(link.sortOrder + 1)} />
           <button type="submit" className={smallBtn}>
             Save
           </button>
@@ -213,7 +213,7 @@ function FooterLinkGroupEditor({
         <input type="hidden" name="group" value={group} />
         <Field label="Label" name="label" />
         <Field label="Href" name="href" />
-        <Field label="Order" name="sortOrder" type="number" defaultValue="0" />
+        <Field label="Order" name="sortOrder" type="number" defaultValue="1" />
         <button type="submit" className={smallBtn}>
           Add
         </button>
