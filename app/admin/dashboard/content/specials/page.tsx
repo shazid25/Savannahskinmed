@@ -1,17 +1,12 @@
 import { prisma } from '@/lib/prisma';
-import { createSpecialCardAction, deleteSpecialCardAction, saveAllAction } from './actions';
+import { saveAllAction } from './actions';
 import AdminSpecialCard from '@/components/admin/AdminSpecialCard';
-import CloudinaryUpload from '@/components/admin/CloudinaryUpload';
+import AddSpecialCardButton from '@/components/admin/AddSpecialCardButton';
 import SpecialsHeroUpload from './SpecialsHeroUpload';
 
 export const dynamic = 'force-dynamic';
 
 const SAVE_FORM_ID = 'specials-save';
-
-const inputClass =
-  'w-full rounded-lg border border-navy/15 px-3 py-2 text-[14px] text-navy outline-none focus:border-navy';
-const smallBtn =
-  'rounded-lg border border-navy/20 px-3 py-1.5 text-[12px] font-medium text-navy hover:bg-navy hover:text-white';
 
 export default async function SpecialsContentPage() {
   let settings, cards;
@@ -55,55 +50,15 @@ export default async function SpecialsContentPage() {
       <section>
         <div className="mb-4 flex items-center justify-between">
           <h2 className="font-serif text-[19px] text-navy">Offer Cards</h2>
-          <p className="text-[12px] text-muted">{cards.length} card{cards.length !== 1 ? 's' : ''}</p>
+          <div className="flex items-center gap-4">
+            <p className="text-[12px] text-muted">{cards.length} card{cards.length !== 1 ? 's' : ''}</p>
+            <AddSpecialCardButton />
+          </div>
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
           {cards.map((card) => (
             <AdminSpecialCard key={card.id} card={card} />
           ))}
-        </div>
-
-        {/* Add New Card */}
-        <div className="mt-6 rounded-2xl border-2 border-dashed border-navy/15 bg-white p-6 shadow-card">
-          <h3 className="mb-4 font-serif text-[16px] text-navy">Add New Card</h3>
-          <form action={createSpecialCardAction} className="grid gap-3 sm:grid-cols-2">
-            <div>
-              <label className="mb-1 block text-[12px] text-muted">ID (unique slug)</label>
-              <input name="id" placeholder="e.g. spring-facial" className={inputClass} />
-            </div>
-            <div>
-              <label className="mb-1 block text-[12px] text-muted">Variant</label>
-              <select name="variant" defaultValue="STORY" className={inputClass}>
-                <option value="STORY">Story (headline + description)</option>
-                <option value="TIERS">Tiers (bundle pricing)</option>
-              </select>
-            </div>
-            <div>
-              <label className="mb-1 block text-[12px] text-muted">Title (overlay on image)</label>
-              <input name="title" className={inputClass} />
-            </div>
-            <div>
-              <label className="mb-1 block text-[12px] text-muted">CTA Label</label>
-              <input name="cta" defaultValue="Claim" className={inputClass} />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="mb-1 block text-[12px] text-muted">Headline (Story cards)</label>
-              <input name="headline" className={inputClass} />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="mb-1 block text-[12px] text-muted">Description (Story cards)</label>
-              <textarea name="description" rows={3} className={inputClass} />
-            </div>
-            <div>
-              <label className="mb-1 block text-[12px] text-muted">Sort Order</label>
-              <input name="sortOrder" type="number" defaultValue="1" className={inputClass} />
-            </div>
-            <div className="flex items-end">
-              <button type="submit" className={smallBtn}>
-                Add Offer Card
-              </button>
-            </div>
-          </form>
         </div>
       </section>
 
