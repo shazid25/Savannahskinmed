@@ -1,20 +1,16 @@
 import { prisma } from '@/lib/prisma';
 import AdminSpecialCard from '@/components/admin/AdminSpecialCard';
 import AddSpecialCardButton from '@/components/admin/AddSpecialCardButton';
-import SpecialsHeroUpload from './SpecialsHeroUpload';
 
 export const dynamic = 'force-dynamic';
 
 export default async function SpecialsContentPage() {
-  let settings, cards;
+  let cards;
   try {
-    [settings, cards] = await Promise.all([
-      prisma.specialsPageSettings.findUnique({ where: { id: 'main' } }),
-      prisma.specialCard.findMany({
-        orderBy: { sortOrder: 'asc' },
-        include: { tiers: { orderBy: { sortOrder: 'asc' } } },
-      }),
-    ]);
+    cards = await prisma.specialCard.findMany({
+      orderBy: { sortOrder: 'asc' },
+      include: { tiers: { orderBy: { sortOrder: 'asc' } } },
+    });
   } catch {
     return (
       <div className="rounded-2xl bg-white p-8 shadow-card">
@@ -32,16 +28,10 @@ export default async function SpecialsContentPage() {
       <div>
         <h1 className="font-serif text-[26px] text-navy">Aesthetic Specials</h1>
         <p className="text-[13px] text-muted">
-          Manage the hero section and offer cards on the public /specials page.
-          Upload images via Cloudinary, edit content, then save.
+          Manage offer cards on the public /specials page.
+          Upload images via Cloudinary, edit content, then save each card.
         </p>
       </div>
-
-      {/* Hero Section */}
-      <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">
-        <h2 className="mb-5 font-serif text-[19px] text-navy">Hero &amp; Heading</h2>
-        <SpecialsHeroUpload settings={settings} />
-      </section>
 
       {/* Offer Cards — visual card layout */}
       <section>
