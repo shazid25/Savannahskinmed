@@ -4,16 +4,16 @@ import Link from 'next/link';
 import PageHero from '@/components/ui/PageHero';
 import { ArrowRight } from '@/components/icons';
 import { serviceContent } from '@/lib/serviceContent';
+import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Our Services',
-  description:
-    'Medical-grade facials, laser treatments, injectables, IV therapy and age management care in Pooler and Statesboro, GA.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('/services');
+}
 
 export default function ServicesIndexPage() {
   return (
     <>
+      <PageJsonLd route="/services" />
       <PageHero
         title="Our Services"
         intro="Science-backed treatments designed to rejuvenate your skin, restore your energy and enhance your confidence."
@@ -28,7 +28,7 @@ export default function ServicesIndexPage() {
             {serviceContent.map((service, i) => (
               <li key={service.slug}>
                 <Link
-                  href={`/services/${service.slug}`}
+                  href={`/${service.slug}`}
                   className={`group flex h-full flex-col gap-3 rounded-lg px-7 py-7 transition-colors duration-300 ${
                     i % 2 === 0 ? 'bg-mint hover:bg-mint/60' : 'bg-aqua hover:bg-aqua/60'
                   }`}

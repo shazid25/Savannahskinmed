@@ -3,16 +3,16 @@ import type { Metadata } from 'next';
 import ContactForm from '@/components/contact/ContactForm';
 import ContactInfo from '@/components/contact/ContactInfo';
 import PageHero from '@/components/ui/PageHero';
+import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Contact Us',
-  description:
-    'Reach out to Savannah Age Management Medicine in Pooler and Statesboro, GA to book your medical-grade facial or ask any questions.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('/contact-us');
+}
 
 export default function ContactPage() {
   return (
     <>
+      <PageJsonLd route="/contact-us" />
       <PageHero
         title="Contact Us"
         intro="We're here to help you achieve glowing, healthy skin. Reach out today to book your medical-grade facial or to ask any questions!"

@@ -65,10 +65,10 @@ export default function LaserRejuvenationOfferings() {
             </div>
 
             <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
-              <Link href="/services/injectables-wrinkle-prevention" className="font-medium cursor-pointer hover:text-rose transition-colors">
+              <Link href="/injectables-wrinkle-prevention" className="font-medium cursor-pointer hover:text-rose transition-colors">
                 &larr; INJECTABLES &amp; WRINKLE PREVENTION
               </Link>
-              <Link href="/services/medical-grade-facials" className="font-medium cursor-pointer hover:text-rose transition-colors">
+              <Link href="/medical-grade-facials" className="font-medium cursor-pointer hover:text-rose transition-colors">
                 MEDICAL-GRADE FACIALS &rarr;
               </Link>
             </div>

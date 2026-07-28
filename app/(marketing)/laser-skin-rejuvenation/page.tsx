@@ -8,12 +8,11 @@ import FaqAccordion, { type FaqItem } from '@/components/services/FaqAccordion';
 import ExpertProfile from '@/components/services/ExpertProfile';
 import Testimonials from '@/components/home/Testimonials';
 import ElevateCta from '@/components/home/ElevateCta';
+import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Laser Skin Rejuvenation',
-  description:
-    'Restore your confidence and glow. Laser treatments to smooth, clear, and revitalize your skin.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('/laser-skin-rejuvenation');
+}
 
 const laserRejuvenationSlides: BeforeAfterSlide[] = [
   { before: 55, after: 56, procedure: 'CO2 Laser Resurfacing' },
@@ -46,6 +45,7 @@ const laserRejuvenationFaqs: FaqItem[] = [
 export default function LaserSkinRejuvenationPage() {
   return (
     <>
+      <PageJsonLd route="/laser-skin-rejuvenation" />
       <ServiceHero
         eyebrow="SERVICES"
         title="Laser Skin Rejuvenation"

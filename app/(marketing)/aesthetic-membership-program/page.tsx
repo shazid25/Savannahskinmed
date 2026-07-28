@@ -7,16 +7,16 @@ import MembershipOptions from '@/components/membership/MembershipOptions';
 import AdditionalBenefits from '@/components/membership/AdditionalBenefits';
 import HowItWorks from '@/components/membership/HowItWorks';
 import MembershipCta from '@/components/membership/MembershipCta';
+import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Aesthetic Membership Program | Savannah Age Management Medicine',
-  description:
-    'Maintain your aesthetic results with exclusive member pricing, flexible monthly credits, and a personalized care plan.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('/aesthetic-membership-program');
+}
 
 export default function AestheticMembershipProgramPage() {
   return (
     <main>
+      <PageJsonLd route="/aesthetic-membership-program" />
       <MembershipHero />
       <BeautyWithoutGuesswork />
       <MemberBenefits />

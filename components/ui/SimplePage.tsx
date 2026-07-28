@@ -21,7 +21,7 @@ export default function SimplePage({
   image = '/images/banner-13-bg.jpg',
   imageAlt = 'Savannah Age Management Medicine',
   body,
-  cta = { label: 'Book Appointment', href: '/contact' },
+  cta = { label: 'Book Appointment', href: '/contact-us' },
 }: SimplePageProps) {
   return (
     <>

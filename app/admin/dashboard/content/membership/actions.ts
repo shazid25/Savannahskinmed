@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/prisma';
 
 function revalidateSpecialsPage() {
-  revalidatePath('/aesthetic-specials');
+  revalidatePath('/specials');
 }
 
 export async function updateMembershipPromoAction(formData: FormData) {

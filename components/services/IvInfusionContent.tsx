@@ -92,13 +92,13 @@ export default function IvInfusionContent() {
             </div>
 
             <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
-              <Link href="/services/laser-skin-rejuvenation" className="font-medium cursor-pointer hover:text-rose transition-colors">
+              <Link href="/laser-skin-rejuvenation" className="font-medium cursor-pointer hover:text-rose transition-colors">
                 &larr; LASER SKIN REJUVENATION
               </Link>
               <BookAppointmentButton className="rounded-full bg-navy px-8 py-3 text-[13px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
                 BOOK APPOINTMENT
               </BookAppointmentButton>
-              <Link href="/services/vaginal-rejuvenation" className="font-medium cursor-pointer hover:text-rose transition-colors">
+              <Link href="/vaginal-rejuvenation" className="font-medium cursor-pointer hover:text-rose transition-colors">
                 VAGINAL REJUVENATION &rarr;
               </Link>
             </div>

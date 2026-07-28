@@ -6,7 +6,7 @@ import { prisma } from '@/lib/prisma';
 import { SpecialCardVariant } from '@/lib/generated/prisma/client';
 
 function revalidateSpecialsPage() {
-  revalidatePath('/aesthetic-specials');
+  revalidatePath('/specials');
 }
 
 export async function updateSpecialsPageSettingsAction(formData: FormData) {

@@ -62,13 +62,13 @@ export default function OfferingsList() {
             </div>
             
             <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-haze pt-8 text-[13px] uppercase tracking-widest2 text-navy">
-              <Link href="/services/iv-infusion-therapy" className="font-medium cursor-pointer hover:text-rose transition-colors">
+              <Link href="/iv-infusion-therapy-vitamin-injections" className="font-medium cursor-pointer hover:text-rose transition-colors">
                 &larr; IV INFUSION THERAPY
               </Link>
               <BookAppointmentButton className="rounded-full bg-navy px-8 py-3 text-[13px] font-bold tracking-widest2 text-white transition-colors hover:bg-navy-deep">
                 BOOK APPOINTMENT
               </BookAppointmentButton>
-              <Link href="/services/injectables-wrinkle-prevention" className="font-medium cursor-pointer hover:text-rose transition-colors">
+              <Link href="/injectables-wrinkle-prevention" className="font-medium cursor-pointer hover:text-rose transition-colors">
                 INJECTABLES &amp; WRINKLE PREVENTION &rarr;
               </Link>
             </div>

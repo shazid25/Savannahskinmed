@@ -15,24 +15,24 @@ import {
 
 /** Row-major order — matches the two-column layout of the live site. */
 const cards = [
-  { label: 'Medical-Grade Facials', href: '/services/medical-grade-facials', Icon: FacialIcon },
-  { label: 'Laser Hair Removal', href: '/services/laser-hair-removal', Icon: LaserHairIcon },
+  { label: 'Medical-Grade Facials', href: '/medical-grade-facials', Icon: FacialIcon },
+  { label: 'Laser Hair Removal', href: '/laser-hair-removal', Icon: LaserHairIcon },
   {
     label: 'Injectables & Wrinkle Prevention',
-    href: '/services/injectables-wrinkle-prevention',
+    href: '/injectables-wrinkle-prevention',
     Icon: SyringeIcon,
   },
   {
     label: 'Laser Skin Rejuvenation',
-    href: '/services/laser-skin-rejuvenation',
+    href: '/laser-skin-rejuvenation',
     Icon: LaserSkinIcon,
   },
   {
     label: 'IV Infusion Therapy & Vitamin Injections',
-    href: '/services/iv-infusion-therapy',
+    href: '/iv-infusion-therapy-vitamin-injections',
     Icon: IvDripIcon,
   },
-  { label: 'Vaginal Rejuvenation', href: '/services/vaginal-rejuvenation', Icon: BloomIcon },
+  { label: 'Vaginal Rejuvenation', href: '/vaginal-rejuvenation', Icon: BloomIcon },
 ];
 
 export default function ServicesSection() {
@@ -73,7 +73,7 @@ export default function ServicesSection() {
         </div>
 
         <Reveal className="mt-11 flex justify-center" delay={120}>
-          <ButtonLink href="/contact">Book Appointment</ButtonLink>
+          <ButtonLink href="/contact-us">Book Appointment</ButtonLink>
         </Reveal>
       </div>
     </section>

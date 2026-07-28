@@ -5,16 +5,16 @@ import VaginalRejuvenationOfferings from '@/components/services/VaginalRejuvenat
 import DrCollinsProfile from '@/components/services/DrCollinsProfile';
 import Testimonials from '@/components/home/Testimonials';
 import ElevateCta from '@/components/home/ElevateCta';
+import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Vaginal Rejuvenation',
-  description:
-    'A discreet and effective solution to restore comfort, confidence, and intimacy.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('/vaginal-rejuvenation');
+}
 
 export default function VaginalRejuvenationPage() {
   return (
     <>
+      <PageJsonLd route="/vaginal-rejuvenation" />
       <ServiceHero
         eyebrow="SERVICES"
         title="Vaginal Rejuvenation"

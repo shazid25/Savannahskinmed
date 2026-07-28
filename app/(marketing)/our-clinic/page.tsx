@@ -4,12 +4,11 @@ import Image from 'next/image';
 import ButtonLink from '@/components/ui/ButtonLink';
 import PageHero from '@/components/ui/PageHero';
 import Reveal from '@/components/ui/Reveal';
+import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Our Clinic',
-  description:
-    'Our clinic is your destination for advanced, personalized aesthetic treatments that promote healthy, radiant skin and a more confident you.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('/our-clinic');
+}
 
 const mosaic = [
   {
@@ -37,6 +36,7 @@ const mosaic = [
 export default function OurClinicPage() {
   return (
     <>
+      <PageJsonLd route="/our-clinic" />
       <PageHero
         title="Our Clinic"
         intro="Our clinic is your destination for advanced, personalized aesthetic treatments that promote healthy, radiant skin and a more confident you."
@@ -67,7 +67,7 @@ export default function OurClinicPage() {
             </p>
 
             <div className="mt-10 flex justify-center">
-              <ButtonLink href="/contact">Book Appointment</ButtonLink>
+              <ButtonLink href="/contact-us">Book Appointment</ButtonLink>
             </div>
           </Reveal>
 
@@ -156,7 +156,7 @@ export default function OurClinicPage() {
                 naturally.
               </p>
 
-              <ButtonLink href="/contact" className="mt-9">
+              <ButtonLink href="/contact-us" className="mt-9">
                 Meet Our Experts
               </ButtonLink>
             </Reveal>

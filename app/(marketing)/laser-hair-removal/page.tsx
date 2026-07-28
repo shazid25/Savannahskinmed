@@ -7,12 +7,11 @@ import FaqAccordion, { type FaqItem } from '@/components/services/FaqAccordion';
 import ExpertProfile from '@/components/services/ExpertProfile';
 import Testimonials from '@/components/home/Testimonials';
 import ElevateCta from '@/components/home/ElevateCta';
+import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Laser Hair Removal',
-  description:
-    'Comfortable, effective laser hair reduction delivered by providers with decades of combined laser experience.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('/laser-hair-removal');
+}
 
 const laserSlides: BeforeAfterSlide[] = [
   { before: 19, after: 20, procedure: 'Laser Hair Removal' },
@@ -39,6 +38,7 @@ const laserFaqs: FaqItem[] = [
 export default function LaserHairRemovalPage() {
   return (
     <>
+      <PageJsonLd route="/laser-hair-removal" />
       <ServiceHero
         eyebrow="SERVICES"
         title="Laser Hair Removal"

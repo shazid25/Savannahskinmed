@@ -25,6 +25,47 @@ export const ADMIN_FALLBACK_PASSWORD_HASH =
   '$2b$10$5EyRELnNJzbA8kJo60EsUO2Z53fPGmZeTPZFi60S0u/wm7amf1A6a';
 
 // ---------------------------------------------------------------------------
+// Site settings (general + social + favicon + analytics + tracking codes)
+// ---------------------------------------------------------------------------
+
+export type SiteSettingsData = {
+  name: string;
+  description: string;
+  phone: string;
+  phoneHref: string;
+  email: string;
+  emailHref: string;
+  address: string;
+  bookingUrl: string;
+  copyrightText: string;
+  faviconUrl: string;
+  googleAnalyticsId: string;
+  metaPixelId: string;
+  headerTrackingCode: string;
+  footerTrackingCode: string;
+};
+
+export function buildSiteSettingsFallback(): SiteSettingsData {
+  return {
+    name: site.name,
+    description:
+      'Customized medical aesthetic solutions to enhance your glow and restore youthful skin. Medical-grade facials, laser treatments, injectables and IV therapy in Pooler and Statesboro, GA.',
+    phone: site.phone,
+    phoneHref: site.phoneHref,
+    email: site.email,
+    emailHref: site.emailHref,
+    address: staticLocations[0]?.address.join(', ') ?? '',
+    bookingUrl: site.bookingUrl,
+    copyrightText: 'Copyright © 2026 Savannah Age Management Medicine',
+    faviconUrl: '',
+    googleAnalyticsId: '',
+    metaPixelId: '',
+    headerTrackingCode: '',
+    footerTrackingCode: '',
+  };
+}
+
+// ---------------------------------------------------------------------------
 // Footer
 // ---------------------------------------------------------------------------
 
@@ -57,15 +98,16 @@ export type FooterData = {
 };
 
 export function buildFooterFallback(): FooterData {
+  const settings = buildSiteSettingsFallback();
   return {
     site: {
-      name: site.name,
-      phone: site.phone,
-      phoneHref: site.phoneHref,
-      email: site.email,
-      emailHref: site.emailHref,
-      bookingUrl: site.bookingUrl,
-      copyrightText: 'Copyright © 2026 Savannah Age Management Medicine',
+      name: settings.name,
+      phone: settings.phone,
+      phoneHref: settings.phoneHref,
+      email: settings.email,
+      emailHref: settings.emailHref,
+      bookingUrl: settings.bookingUrl,
+      copyrightText: settings.copyrightText,
     },
     socials: socials.map((s) => ({ label: s.label, href: s.href, icon: s.icon })),
     locations: staticLocations.map((location) => ({

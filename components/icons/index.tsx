@@ -165,6 +165,30 @@ export function LinkedinIcon(props: IconProps) {
   );
 }
 
+export function TwitterIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path
+        fill="currentColor"
+        d="M18.9 3h3.1l-6.77 7.73L23.2 21h-6.23l-4.88-6.38L6.5 21H3.4l7.24-8.27L3 3h6.38l4.41 5.83L18.9 3Zm-1.09 16.2h1.72L7.29 4.7H5.44l12.37 14.5Z"
+      />
+    </svg>
+  );
+}
+
+export function GithubIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 2.5a9.5 9.5 0 0 0-3 18.52c.48.09.65-.2.65-.46v-1.8c-2.64.57-3.2-1.13-3.2-1.13-.43-1.1-1.06-1.4-1.06-1.4-.86-.6.07-.58.07-.58.96.07 1.46.98 1.46.98.85 1.46 2.24 1.04 2.78.79.09-.62.33-1.04.6-1.28-2.11-.24-4.33-1.06-4.33-4.7 0-1.04.37-1.89.98-2.55-.1-.24-.43-1.22.09-2.54 0 0 .8-.26 2.62.98a9 9 0 0 1 4.78 0c1.82-1.24 2.62-.98 2.62-.98.52 1.32.2 2.3.1 2.54.6.66.98 1.51.98 2.55 0 3.65-2.23 4.45-4.35 4.69.34.3.65.87.65 1.76v2.6c0 .27.17.56.66.46A9.5 9.5 0 0 0 12 2.5Z"
+      />
+    </svg>
+  );
+}
+
 export function MenuIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>

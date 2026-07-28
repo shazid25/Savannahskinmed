@@ -4,7 +4,7 @@ export const site = {
   phoneHref: 'tel:+19129256911',
   email: 'info@agemanagementmed.com',
   emailHref: 'mailto:info@agemanagementmed.com',
-  bookingUrl: '/contact',
+  bookingUrl: '/contact-us',
 } as const;
 
 export type ServiceLink = {
@@ -14,14 +14,14 @@ export type ServiceLink = {
 
 /** Order matches the "Services" dropdown in the main navigation. */
 export const services: ServiceLink[] = [
-  { label: 'Medical Grade Facials', href: '/services/medical-grade-facials' },
-  { label: 'Laser Hair Removal', href: '/services/laser-hair-removal' },
-  { label: 'Injectables & Wrinkle Prevention', href: '/services/injectables-wrinkle-prevention' },
-  { label: 'Laser Skin Rejuvenation', href: '/services/laser-skin-rejuvenation' },
-  { label: 'IV Infusion Therapy & Vitamin Injections', href: '/services/iv-infusion-therapy' },
-  { label: 'Vaginal Rejuvenation', href: '/services/vaginal-rejuvenation' },
-  { label: 'Aesthetic Membership Program', href: '/services/aesthetic-membership-program' },
-  { label: 'Aesthetic Specials', href: '/aesthetic-specials' },
+  { label: 'Medical Grade Facials', href: '/medical-grade-facials' },
+  { label: 'Laser Hair Removal', href: '/laser-hair-removal' },
+  { label: 'Injectables & Wrinkle Prevention', href: '/injectables-wrinkle-prevention' },
+  { label: 'Laser Skin Rejuvenation', href: '/laser-skin-rejuvenation' },
+  { label: 'IV Infusion Therapy & Vitamin Injections', href: '/iv-infusion-therapy-vitamin-injections' },
+  { label: 'Vaginal Rejuvenation', href: '/vaginal-rejuvenation' },
+  { label: 'Aesthetic Membership Program', href: '/aesthetic-membership-program' },
+  { label: 'Aesthetic Specials', href: '/specials' },
   { label: 'Health & Wellness Services', href: '/services/health-wellness-services' },
 ];
 
@@ -29,7 +29,7 @@ export const primaryNav = [
   { label: 'Home', href: '/' },
   { label: 'Our Clinic', href: '/our-clinic' },
   { label: 'Services', href: '/services', children: services },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Contact', href: '/contact-us' },
 ] as const;
 
 export const quickLinks: ServiceLink[] = [
@@ -37,19 +37,19 @@ export const quickLinks: ServiceLink[] = [
   { label: 'Our Clinic', href: '/our-clinic' },
   { label: 'Financing Options', href: '/financing-options' },
   { label: 'Office Policies', href: '/office-policies' },
-  { label: 'Aesthetic Specials', href: '/aesthetic-specials' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Aesthetic Specials', href: '/specials' },
+  { label: 'Contact', href: '/contact-us' },
 ];
 
 /** Footer "Services" column — uses the site's hyphenated naming. */
 export const footerServices: ServiceLink[] = [
-  { label: 'Medical-Grade Facials', href: '/services/medical-grade-facials' },
-  { label: 'Laser Hair Removal', href: '/services/laser-hair-removal' },
-  { label: 'Injectables & Wrinkle Prevention', href: '/services/injectables-wrinkle-prevention' },
-  { label: 'Laser Skin Rejuvenation', href: '/services/laser-skin-rejuvenation' },
-  { label: 'IV Infusion Therapy & Vitamin Injections', href: '/services/iv-infusion-therapy' },
-  { label: 'Vaginal Rejuvenation', href: '/services/vaginal-rejuvenation' },
-  { label: 'Aesthetic Membership Program', href: '/services/aesthetic-membership-program' },
+  { label: 'Medical-Grade Facials', href: '/medical-grade-facials' },
+  { label: 'Laser Hair Removal', href: '/laser-hair-removal' },
+  { label: 'Injectables & Wrinkle Prevention', href: '/injectables-wrinkle-prevention' },
+  { label: 'Laser Skin Rejuvenation', href: '/laser-skin-rejuvenation' },
+  { label: 'IV Infusion Therapy & Vitamin Injections', href: '/iv-infusion-therapy-vitamin-injections' },
+  { label: 'Vaginal Rejuvenation', href: '/vaginal-rejuvenation' },
+  { label: 'Aesthetic Membership Program', href: '/aesthetic-membership-program' },
   { label: 'Health & Wellness Services', href: '/services/health-wellness-services' },
 ];
 

@@ -7,9 +7,11 @@ import {
   ADMIN_FALLBACK_EMAIL,
   buildFooterFallback,
   buildMembershipPromoFallback,
+  buildSiteSettingsFallback,
   buildSpecialsFallback,
   buildSpecialsPageSettingsFallback,
 } from '../lib/data/shape';
+import { seoRoutes } from '../lib/seoRoutes';
 
 async function main() {
   console.log('Seeding admin user…');
@@ -20,14 +22,16 @@ async function main() {
     create: { email: ADMIN_FALLBACK_EMAIL, passwordHash },
   });
 
-  console.log('Seeding footer content…');
-  const footer = buildFooterFallback();
-
+  console.log('Seeding site settings…');
+  const settingsData = buildSiteSettingsFallback();
   await prisma.siteSetting.upsert({
     where: { id: 'main' },
-    update: footer.site,
-    create: { id: 'main', ...footer.site },
+    update: settingsData,
+    create: { id: 'main', ...settingsData },
   });
+
+  console.log('Seeding footer content…');
+  const footer = buildFooterFallback();
 
   await prisma.socialLink.deleteMany();
   await prisma.socialLink.createMany({
@@ -127,6 +131,14 @@ async function main() {
   await prisma.membershipPromoBullet.createMany({
     data: promo.bullets.map((text, i) => ({ text, sortOrder: i, promoId: 'main' })),
   });
+
+  console.log('Ensuring SEO rows exist for every known route…');
+  for (const { route } of seoRoutes) {
+    const existing = await prisma.pageSeo.findUnique({ where: { route } });
+    if (!existing) {
+      await prisma.pageSeo.create({ data: { route } });
+    }
+  }
 
   console.log('Seed complete.');
 }

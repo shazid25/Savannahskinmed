@@ -24,15 +24,56 @@ model AdminUser {
 
 /// Singleton row (id is always "main").
 model SiteSetting {
-  id            String   @id @default("main")
+  id            String @id @default("main")
   name          String
+  description   String @default("")
   phone         String
   phoneHref     String
   email         String
   emailHref     String
+  address       String @default("")
   bookingUrl    String
   copyrightText String
-  updatedAt     DateTime @updatedAt
+
+  faviconUrl String @default("")
+
+  googleAnalyticsId String @default("")
+  metaPixelId       String @default("")
+
+  headerTrackingCode String @default("")
+  footerTrackingCode String @default("")
+
+  updatedAt DateTime @updatedAt
+}
+
+// ---------------------------------------------------------------------------
+// SEO / AEO — per-route metadata + structured data
+// ---------------------------------------------------------------------------
+
+enum RobotsDirective {
+  INHERIT
+  INDEX_FOLLOW
+  NOINDEX_FOLLOW
+  NOINDEX_NOFOLLOW
+}
+
+enum SchemaSource {
+  AUTO
+  CUSTOM
+}
+
+model PageSeo {
+  id            String          @id @default(cuid())
+  route         String          @unique
+  title         String          @default("")
+  description   String          @default("")
+  keywords      String          @default("")
+  canonicalUrl  String          @default("")
+  robots        RobotsDirective @default(INHERIT)
+  schemaEnabled Boolean         @default(true)
+  schemaSource  SchemaSource    @default(AUTO)
+  customSchema  String          @default("")
+  updatedAt     DateTime        @updatedAt
 }
 
 model SocialLink {

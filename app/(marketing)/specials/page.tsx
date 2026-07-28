@@ -3,12 +3,11 @@ import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
 import SpecialsContent from '@/components/specials/SpecialsContent';
 import { getSpecialsPageData } from '@/lib/data/specials';
+import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Aesthetic Specials',
-  description:
-    'Current promotions and seasonal offers on aesthetic treatments at Savannah Age Management Medicine.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('/specials');
+}
 
 export const revalidate = 300;
 
@@ -17,6 +16,7 @@ export default async function AestheticSpecialsPage() {
 
   return (
     <>
+      <PageJsonLd route="/specials" />
       <PageHero
         title={settings.heroTitle}
         intro={settings.heroIntro}

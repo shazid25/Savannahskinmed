@@ -3,16 +3,12 @@ import {
   createFooterLinkAction,
   createLocationAction,
   createLocationHourAction,
-  createSocialLinkAction,
   deleteFooterLinkAction,
   deleteLocationAction,
   deleteLocationHourAction,
-  deleteSocialLinkAction,
   updateFooterLinkAction,
   updateLocationAction,
   updateLocationHourAction,
-  updateSiteSettingAction,
-  updateSocialLinkAction,
 } from './actions';
 
 export const dynamic = 'force-dynamic';
@@ -23,11 +19,9 @@ const smallBtn =
   'rounded-lg border border-navy/20 px-3 py-1.5 text-[12px] font-medium text-navy hover:bg-navy hover:text-white';
 
 export default async function SiteContentPage() {
-  let siteSetting, socialLinks, locations, footerLinks;
+  let locations, footerLinks;
   try {
-    [siteSetting, socialLinks, locations, footerLinks] = await Promise.all([
-      prisma.siteSetting.findUnique({ where: { id: 'main' } }),
-      prisma.socialLink.findMany({ orderBy: { sortOrder: 'asc' } }),
+    [locations, footerLinks] = await Promise.all([
       prisma.location.findMany({
         orderBy: { sortOrder: 'asc' },
         include: { hours: { orderBy: { sortOrder: 'asc' } } },
@@ -37,7 +31,7 @@ export default async function SiteContentPage() {
   } catch {
     return (
       <div className="rounded-2xl bg-white p-8 shadow-card">
-        <h1 className="mb-2 font-serif text-[24px] text-navy">Site &amp; Footer</h1>
+        <h1 className="mb-2 font-serif text-[24px] text-navy">Locations &amp; Footer Links</h1>
         <p className="text-[14px] text-muted">
           Database not connected yet. Set <code>DATABASE_URL</code> and run migrations + seed to
           manage this content.
@@ -51,74 +45,13 @@ export default async function SiteContentPage() {
 
   return (
     <div className="space-y-8">
-      <h1 className="font-serif text-[26px] text-navy">Site &amp; Footer</h1>
-
-      {/* Site settings */}
-      <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">
-        <h2 className="mb-4 font-serif text-[19px] text-navy">Brand &amp; Contact</h2>
-        <form action={updateSiteSettingAction} className="grid gap-4 sm:grid-cols-2">
-          <Field label="Business Name" name="name" defaultValue={siteSetting?.name} />
-          <Field label="Phone (display)" name="phone" defaultValue={siteSetting?.phone} />
-          <Field label="Phone href (tel:...)" name="phoneHref" defaultValue={siteSetting?.phoneHref} />
-          <Field label="Email" name="email" defaultValue={siteSetting?.email} />
-          <Field label="Email href (mailto:...)" name="emailHref" defaultValue={siteSetting?.emailHref} />
-          <Field label="Booking URL" name="bookingUrl" defaultValue={siteSetting?.bookingUrl} />
-          <Field
-            label="Copyright text"
-            name="copyrightText"
-            defaultValue={siteSetting?.copyrightText}
-            className="sm:col-span-2"
-          />
-          <div className="sm:col-span-2">
-            <button type="submit" className={smallBtn}>
-              Save Brand &amp; Contact
-            </button>
-          </div>
-        </form>
-      </section>
-
-      {/* Social links */}
-      <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">
-        <h2 className="mb-4 font-serif text-[19px] text-navy">Social Links</h2>
-        <div className="space-y-4">
-          {socialLinks.map((s) => (
-            <form
-              key={s.id}
-              action={updateSocialLinkAction}
-              className="grid items-end gap-3 sm:grid-cols-[1fr_2fr_1fr_auto_auto]"
-            >
-              <input type="hidden" name="id" value={s.id} />
-              <Field label="Icon" name="icon" defaultValue={s.icon} />
-              <Field label="Href" name="href" defaultValue={s.href} />
-              <Field label="Label" name="label" defaultValue={s.label} />
-              <Field label="Order" name="sortOrder" defaultValue={String(s.sortOrder)} type="number" />
-              <div className="flex gap-2">
-                <button type="submit" className={smallBtn}>
-                  Save
-                </button>
-              </div>
-              <button
-                formAction={deleteSocialLinkAction}
-                className="text-[12px] font-medium text-red-600 hover:underline sm:col-start-5"
-              >
-                Delete
-              </button>
-            </form>
-          ))}
-        </div>
-
-        <form action={createSocialLinkAction} className="mt-5 grid gap-3 border-t border-navy/10 pt-5 sm:grid-cols-[1fr_2fr_1fr_auto]">
-          <Field label="Icon (facebook/instagram/linkedin)" name="icon" defaultValue="facebook" />
-          <Field label="Href" name="href" />
-          <Field label="Label" name="label" />
-          <Field label="Order" name="sortOrder" defaultValue="0" type="number" />
-          <div>
-            <button type="submit" className={smallBtn}>
-              Add Social Link
-            </button>
-          </div>
-        </form>
-      </section>
+      <div>
+        <h1 className="font-serif text-[26px] text-navy">Locations &amp; Footer Links</h1>
+        <p className="text-[13px] text-muted">
+          Brand info, social links, favicon and tracking codes now live under{' '}
+          <span className="font-medium text-navy">Settings</span>.
+        </p>
+      </div>
 
       {/* Locations */}
       <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">

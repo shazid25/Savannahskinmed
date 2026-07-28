@@ -2,16 +2,16 @@ import type { Metadata } from 'next';
 
 import PageHero from '@/components/ui/PageHero';
 import CherryFinancing from '@/components/financing/CherryFinancing';
+import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Financing Options',
-  description:
-    'Flexible payment and financing options for aesthetic treatments at Savannah Age Management Medicine, powered by Cherry.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('/financing-options');
+}
 
 export default function FinancingOptionsPage() {
   return (
     <>
+      <PageJsonLd route="/financing-options" />
       <PageHero
         title="Financing Options"
         intro="Flexible ways to pay, so the treatment plan that is right for your skin is also right for your budget."

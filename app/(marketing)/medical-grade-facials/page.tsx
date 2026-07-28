@@ -7,12 +7,11 @@ import FaqAccordion, { type FaqItem } from '@/components/services/FaqAccordion';
 import ExpertProfile from '@/components/services/ExpertProfile';
 import Testimonials from '@/components/home/Testimonials';
 import ElevateCta from '@/components/home/ElevateCta';
+import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Medical Grade Facials',
-  description:
-    'Clinical facials built around your skin type, tone and goals — from deep cleansing to dermaplaning and resurfacing.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('/medical-grade-facials');
+}
 
 const facialSlides: BeforeAfterSlide[] = [
   { before: 21, after: 22, procedure: 'Medical-Grade Facial' },
@@ -40,6 +39,7 @@ const facialFaqs: FaqItem[] = [
 export default function MedicalGradeFacialsPage() {
   return (
     <>
+      <PageJsonLd route="/medical-grade-facials" />
       <ServiceHero
         eyebrow="SERVICES"
         title="Medical-Grade Facials"

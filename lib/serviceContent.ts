@@ -47,7 +47,7 @@ export const serviceContent: ServiceContent[] = [
     ],
   },
   {
-    slug: 'iv-infusion-therapy',
+    slug: 'iv-infusion-therapy-vitamin-injections',
     title: 'IV Infusion Therapy & Vitamin Injections',
     intro:
       'Hydration, vitamins and antioxidants delivered directly into the bloodstream for fast, efficient absorption.',

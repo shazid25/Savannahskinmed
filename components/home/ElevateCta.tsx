@@ -28,7 +28,7 @@ export default function ElevateCta() {
             Start your journey toward a more radiant, youthful appearance.
           </p>
 
-          <ButtonLink href="/contact" className="mt-9">
+          <ButtonLink href="/contact-us" className="mt-9">
             Book Appointment
           </ButtonLink>
         </Reveal>

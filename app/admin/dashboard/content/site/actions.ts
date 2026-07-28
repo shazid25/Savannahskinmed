@@ -10,73 +10,10 @@ function revalidatePublicPages() {
 }
 
 // ---------------------------------------------------------------------------
-// Site settings
-// ---------------------------------------------------------------------------
-
-export async function updateSiteSettingAction(formData: FormData) {
-  const data = {
-    name: String(formData.get('name') || ''),
-    phone: String(formData.get('phone') || ''),
-    phoneHref: String(formData.get('phoneHref') || ''),
-    email: String(formData.get('email') || ''),
-    emailHref: String(formData.get('emailHref') || ''),
-    bookingUrl: String(formData.get('bookingUrl') || ''),
-    copyrightText: String(formData.get('copyrightText') || ''),
-  };
-
-  await prisma.siteSetting.upsert({
-    where: { id: 'main' },
-    update: data,
-    create: { id: 'main', ...data },
-  });
-  revalidatePublicPages();
-  revalidatePath('/admin/dashboard/content/site');
-}
-
-// ---------------------------------------------------------------------------
-// Social links
-// ---------------------------------------------------------------------------
-
-export async function createSocialLinkAction(formData: FormData) {
-  await prisma.socialLink.create({
-    data: {
-      label: String(formData.get('label') || ''),
-      href: String(formData.get('href') || ''),
-      icon: String(formData.get('icon') || 'facebook'),
-      sortOrder: Number(formData.get('sortOrder') || 0),
-    },
-  });
-  revalidatePublicPages();
-  revalidatePath('/admin/dashboard/content/site');
-}
-
-export async function updateSocialLinkAction(formData: FormData) {
-  const id = String(formData.get('id') || '');
-  if (!id) return;
-  await prisma.socialLink.update({
-    where: { id },
-    data: {
-      label: String(formData.get('label') || ''),
-      href: String(formData.get('href') || ''),
-      icon: String(formData.get('icon') || 'facebook'),
-      sortOrder: Number(formData.get('sortOrder') || 0),
-    },
-  });
-  revalidatePublicPages();
-  revalidatePath('/admin/dashboard/content/site');
-}
-
-export async function deleteSocialLinkAction(formData: FormData) {
-  const id = String(formData.get('id') || '');
-  if (!id) return;
-  await prisma.socialLink.delete({ where: { id } });
-  revalidatePublicPages();
-  revalidatePath('/admin/dashboard/content/site');
-}
-
-// ---------------------------------------------------------------------------
 // Locations
 // ---------------------------------------------------------------------------
+// Brand/contact/social/favicon/analytics/tracking settings now live under
+// /admin/dashboard/settings (see app/admin/dashboard/settings/actions.ts).
 
 export async function createLocationAction(formData: FormData) {
   const addressLines = String(formData.get('addressLines') || '')

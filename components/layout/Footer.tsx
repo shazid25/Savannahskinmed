@@ -5,17 +5,21 @@ import { getFooterData } from '@/lib/data/footer';
 import {
   ClockIcon,
   FacebookIcon,
+  GithubIcon,
   InstagramIcon,
   LinkedinIcon,
   MailIcon,
   PhoneIcon,
   PinIcon,
+  TwitterIcon,
 } from '@/components/icons';
 
 const socialIcons: Record<string, typeof FacebookIcon> = {
   facebook: FacebookIcon,
   instagram: InstagramIcon,
   linkedin: LinkedinIcon,
+  twitter: TwitterIcon,
+  github: GithubIcon,
 };
 
 function ColumnHeading({ children }: { children: React.ReactNode }) {

@@ -4,16 +4,16 @@ import PageHero from '@/components/ui/PageHero';
 import ButtonLink from '@/components/ui/ButtonLink';
 import Reveal from '@/components/ui/Reveal';
 import { site } from '@/lib/site';
+import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Office Policies',
-  description:
-    'Appointment, cancellation and payment policies for Savannah Age Management Medicine.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata('/office-policies');
+}
 
 export default function OfficePoliciesPage() {
   return (
     <>
+      <PageJsonLd route="/office-policies" />
       <PageHero
         title="Office Policies"
         intro="A few things worth knowing before your visit, so your appointment runs smoothly."
@@ -114,7 +114,7 @@ export default function OfficePoliciesPage() {
             </p>
 
             <div className="mt-10">
-              <ButtonLink href="/contact">Contact The Office</ButtonLink>
+              <ButtonLink href="/contact-us">Contact The Office</ButtonLink>
             </div>
           </Reveal>
         </div>
