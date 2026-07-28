@@ -42,9 +42,7 @@ export default function AdminSidebar({ email }: { email: string }) {
   return (
     <aside className="flex h-screen w-[240px] shrink-0 flex-col bg-navy-deep text-white">
       <div className="px-6 py-6">
-        <p className="font-serif text-[18px] leading-tight text-white">Savannah Age</p>
-        <p className="font-serif text-[18px] leading-tight text-white">Management Medicine</p>
-        <p className="mt-1 text-[10px] uppercase tracking-widest2 text-white/40">Admin Portal</p>
+        <p className="font-serif text-[18px] leading-tight text-white">Admin Portal</p>
       </div>
 
       <nav className="flex-1 space-y-6 overflow-y-auto px-4 pb-6">
