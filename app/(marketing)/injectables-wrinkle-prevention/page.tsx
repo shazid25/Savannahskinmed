@@ -18,7 +18,7 @@ const injectablesSlides: BeforeAfterSlide[] = [
 export default function InjectablesPage() {
   return (
     <>
-      <PageJsonLd route="/injectables-wrinkle-prevention" />
+      <PageJsonLd route="/injectables-wrinkle-prevention" isService />
       <ServiceHero
         eyebrow="SERVICES"
         title="Injectables & Wrinkle Prevention"

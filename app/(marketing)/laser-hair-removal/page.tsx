@@ -7,7 +7,7 @@ import FaqAccordion, { type FaqItem } from '@/components/services/FaqAccordion';
 import ExpertProfile from '@/components/services/ExpertProfile';
 import Testimonials from '@/components/home/Testimonials';
 import ElevateCta from '@/components/home/ElevateCta';
-import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
+import { buildPageMetadata, FaqJsonLd, PageJsonLd } from '@/lib/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata('/laser-hair-removal');
@@ -38,7 +38,8 @@ const laserFaqs: FaqItem[] = [
 export default function LaserHairRemovalPage() {
   return (
     <>
-      <PageJsonLd route="/laser-hair-removal" />
+      <PageJsonLd route="/laser-hair-removal" isService />
+      <FaqJsonLd faqs={laserFaqs} />
       <ServiceHero
         eyebrow="SERVICES"
         title="Laser Hair Removal"

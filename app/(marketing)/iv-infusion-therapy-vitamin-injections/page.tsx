@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function IvInfusionTherapyPage() {
   return (
     <>
-      <PageJsonLd route="/iv-infusion-therapy-vitamin-injections" />
+      <PageJsonLd route="/iv-infusion-therapy-vitamin-injections" isService />
       <ServiceHero
         eyebrow="SERVICES"
         title="IV Infusion Therapy & Vitamin Injections"

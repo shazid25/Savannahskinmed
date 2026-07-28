@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import { manrope, playfair } from '@/lib/fonts';
 import { getSiteSettings } from '@/lib/data/siteSettings';
+import { getFooterData } from '@/lib/data/footer';
 import { OrganizationJsonLd } from '@/lib/seo';
 import { SITE_URL } from '@/lib/siteUrl';
 import '../globals.css';
@@ -38,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const settings = await getSiteSettings();
+  const [settings, footer] = await Promise.all([getSiteSettings(), getFooterData()]);
 
   return (
     <html lang="en" className={`${playfair.variable} ${manrope.variable}`}>
@@ -93,6 +94,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           phone={settings.phone}
           email={settings.email}
           address={settings.address}
+          locations={footer.locations}
+          socials={footer.socials}
         />
       </head>
       <body>

@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function AestheticMembershipProgramPage() {
   return (
     <main>
-      <PageJsonLd route="/aesthetic-membership-program" />
+      <PageJsonLd route="/aesthetic-membership-program" isService />
       <MembershipHero />
       <BeautyWithoutGuesswork />
       <MemberBenefits />

@@ -7,7 +7,7 @@ import FaqAccordion, { type FaqItem } from '@/components/services/FaqAccordion';
 import ExpertProfile from '@/components/services/ExpertProfile';
 import Testimonials from '@/components/home/Testimonials';
 import ElevateCta from '@/components/home/ElevateCta';
-import { buildPageMetadata, PageJsonLd } from '@/lib/seo';
+import { buildPageMetadata, FaqJsonLd, PageJsonLd } from '@/lib/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata('/medical-grade-facials');
@@ -39,7 +39,8 @@ const facialFaqs: FaqItem[] = [
 export default function MedicalGradeFacialsPage() {
   return (
     <>
-      <PageJsonLd route="/medical-grade-facials" />
+      <PageJsonLd route="/medical-grade-facials" isService />
+      <FaqJsonLd faqs={facialFaqs} />
       <ServiceHero
         eyebrow="SERVICES"
         title="Medical-Grade Facials"

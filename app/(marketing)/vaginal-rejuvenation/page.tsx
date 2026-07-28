@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function VaginalRejuvenationPage() {
   return (
     <>
-      <PageJsonLd route="/vaginal-rejuvenation" />
+      <PageJsonLd route="/vaginal-rejuvenation" isService />
       <ServiceHero
         eyebrow="SERVICES"
         title="Vaginal Rejuvenation"
