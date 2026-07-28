@@ -19,7 +19,7 @@ import {
   PinIcon,
 } from '@/components/icons';
 
-export default function Header() {
+export default function Header({ logoUrl }: { logoUrl?: string }) {
   const pathname = usePathname();
   const [desktopOpen, setDesktopOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -69,7 +69,7 @@ export default function Header() {
       className={`fixed inset-x-0 top-0 z-50 bg-transparent`}
     >
       <div className="mx-auto flex h-[76px] w-full max-w-[1500px] items-center justify-between px-5 lg:h-[92px] lg:px-10">
-        <Logo variant="light" />
+        <Logo variant="light" src={logoUrl} />
 
         {/* ---------------- Desktop navigation ---------------- */}
         <nav aria-label="Primary" className="hidden lg:block">

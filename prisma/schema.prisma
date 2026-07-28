@@ -35,6 +35,7 @@ model SiteSetting {
   bookingUrl    String
   copyrightText String
 
+  logoUrl   String @default("")
   faviconUrl String @default("")
 
   googleAnalyticsId String @default("")

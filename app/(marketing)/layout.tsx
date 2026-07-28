@@ -102,7 +102,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         >
           Skip to content
         </a>
-        <Header />
+        <Header logoUrl={settings.logoUrl || undefined} />
         <main id="main">{children}</main>
         <Footer />
 

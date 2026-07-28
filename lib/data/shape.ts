@@ -38,6 +38,7 @@ export type SiteSettingsData = {
   address: string;
   bookingUrl: string;
   copyrightText: string;
+  logoUrl: string;
   faviconUrl: string;
   googleAnalyticsId: string;
   metaPixelId: string;
@@ -57,6 +58,7 @@ export function buildSiteSettingsFallback(): SiteSettingsData {
     address: staticLocations[0]?.address.join(', ') ?? '',
     bookingUrl: site.bookingUrl,
     copyrightText: 'Copyright © 2026 Savannah Age Management Medicine',
+    logoUrl: '',
     faviconUrl: '',
     googleAnalyticsId: '',
     metaPixelId: '',

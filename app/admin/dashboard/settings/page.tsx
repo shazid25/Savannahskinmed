@@ -1,4 +1,5 @@
 import AdminAccountForm from '@/components/admin/AdminAccountForm';
+import SiteBrandingUpload from '@/components/admin/SiteBrandingUpload';
 import { prisma } from '@/lib/prisma';
 import { updateSettingsAction } from './actions';
 
@@ -36,6 +37,12 @@ export default async function AdminSettingsPage() {
         <p className="text-[13px] text-muted">Manage your site configuration</p>
       </div>
 
+      {/* Branding — Logo & Favicon upload at the top */}
+      <SiteBrandingUpload
+        logoUrl={settings?.logoUrl || ''}
+        faviconUrl={settings?.faviconUrl || ''}
+      />
+
       <AdminAccountForm currentEmail={adminUser?.email ?? ''} />
 
       <form action={updateSettingsAction} className="space-y-8">
@@ -66,14 +73,6 @@ export default async function AdminSettingsPage() {
             <Field label="Facebook" name="facebook" placeholder="https://facebook.com/…" defaultValue={socialByIcon.facebook} />
             <Field label="Instagram" name="instagram" placeholder="https://instagram.com/…" defaultValue={socialByIcon.instagram} />
           </div>
-        </section>
-
-        <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">
-          <h2 className="mb-2 font-serif text-[19px] text-navy">Favicon</h2>
-          <p className="mb-4 text-[13px] text-muted">
-            Paste the URL of your favicon image (PNG, ICO, or WebP)
-          </p>
-          <Field label="" name="faviconUrl" placeholder="https://example.com/favicon.png" defaultValue={settings?.faviconUrl} />
         </section>
 
         <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">

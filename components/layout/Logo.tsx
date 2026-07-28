@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const LOGO_SRC = '/images/samm-logo.png';
+const FALLBACK_LOGO_SRC = '/images/samm-logo.png';
 const LOGO_W = 576;
 const LOGO_H = 264;
 
@@ -9,9 +9,12 @@ type LogoProps = {
   /** `light` uses the white artwork, `dark` re-colours it to navy for the footer. */
   variant?: 'light' | 'dark';
   className?: string;
+  /** Override logo image URL (from admin settings). Falls back to static file. */
+  src?: string;
 };
 
-export default function Logo({ variant = 'light', className = '' }: LogoProps) {
+export default function Logo({ variant = 'light', className = '', src }: LogoProps) {
+  const logoSrc = src || FALLBACK_LOGO_SRC;
   return (
     <Link
       href="/"
@@ -20,7 +23,7 @@ export default function Logo({ variant = 'light', className = '' }: LogoProps) {
     >
       {variant === 'light' ? (
         <Image
-          src={LOGO_SRC}
+          src={logoSrc}
           alt="Savannah Age Management Medicine"
           width={LOGO_W}
           height={LOGO_H}
@@ -35,8 +38,8 @@ export default function Logo({ variant = 'light', className = '' }: LogoProps) {
           className="block w-full bg-navy"
           style={{
             aspectRatio: `${LOGO_W} / ${LOGO_H}`,
-            WebkitMaskImage: `url(${LOGO_SRC})`,
-            maskImage: `url(${LOGO_SRC})`,
+            WebkitMaskImage: `url(${logoSrc})`,
+            maskImage: `url(${logoSrc})`,
             WebkitMaskSize: 'contain',
             maskSize: 'contain',
             WebkitMaskRepeat: 'no-repeat',

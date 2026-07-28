@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import Logo from './Logo';
 import { getFooterData } from '@/lib/data/footer';
+import { getSiteSettings } from '@/lib/data/siteSettings';
 import {
   ClockIcon,
   FacebookIcon,
@@ -29,7 +30,7 @@ function ColumnHeading({ children }: { children: React.ReactNode }) {
 }
 
 export default async function Footer() {
-  const footer = await getFooterData();
+  const [footer, siteSettings] = await Promise.all([getFooterData(), getSiteSettings()]);
 
   return (
     <footer className="bg-white pt-16 lg:pt-[104px]">
@@ -37,7 +38,7 @@ export default async function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.05fr_1.35fr_0.9fr_1.25fr] lg:gap-10">
           {/* ---------------- Brand ---------------- */}
           <div>
-            <Logo variant="dark" />
+            <Logo variant="dark" src={siteSettings.logoUrl || undefined} />
 
             <ul className="mt-7 flex items-center gap-3">
               {footer.socials.map((social) => {
