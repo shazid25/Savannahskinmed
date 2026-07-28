@@ -1,3 +1,4 @@
+import AdminAccountForm from '@/components/admin/AdminAccountForm';
 import { prisma } from '@/lib/prisma';
 import { updateSettingsAction } from './actions';
 
@@ -7,11 +8,12 @@ const inputClass =
   'w-full rounded-lg border border-navy/15 px-3.5 py-2.5 text-[14px] text-navy outline-none focus:border-navy';
 
 export default async function AdminSettingsPage() {
-  let settings, socials;
+  let settings, socials, adminUser;
   try {
-    [settings, socials] = await Promise.all([
+    [settings, socials, adminUser] = await Promise.all([
       prisma.siteSetting.findUnique({ where: { id: 'main' } }),
       prisma.socialLink.findMany(),
+      prisma.adminUser.findFirst(),
     ]);
   } catch {
     return (
@@ -33,6 +35,8 @@ export default async function AdminSettingsPage() {
         <h1 className="font-serif text-[26px] text-navy">Settings</h1>
         <p className="text-[13px] text-muted">Manage your site configuration</p>
       </div>
+
+      <AdminAccountForm currentEmail={adminUser?.email ?? ''} />
 
       <form action={updateSettingsAction} className="space-y-8">
         <section className="rounded-2xl bg-white p-6 shadow-card sm:p-8">

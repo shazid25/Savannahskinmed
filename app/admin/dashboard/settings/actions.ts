@@ -1,5 +1,6 @@
 'use server';
 
+import bcrypt from 'bcryptjs';
 import { revalidatePath } from 'next/cache';
 
 import { prisma } from '@/lib/prisma';
@@ -74,3 +75,71 @@ export async function updateSettingsAction(formData: FormData) {
   revalidatePath('/', 'layout');
   revalidatePath('/admin/dashboard/settings');
 }
+
+export type AdminAccountState = { error?: string; success?: string };
+
+export async function updateAdminAccountAction(
+  _prevState: AdminAccountState,
+  formData: FormData,
+): Promise<AdminAccountState> {
+  const currentPassword = String(formData.get('currentPassword') || '');
+  const newEmail = String(formData.get('newEmail') || '').trim().toLowerCase();
+  const newPassword = String(formData.get('newPassword') || '');
+  const confirmPassword = String(formData.get('confirmPassword') || '');
+
+  if (!currentPassword) {
+    return { error: 'Current password is required to make changes.' };
+  }
+
+  // Find the first (only) admin user
+  const admin = await prisma.adminUser.findFirst();
+  if (!admin) {
+    return { error: 'No admin account found.' };
+  }
+
+  // Verify current password
+  const valid = await bcrypt.compare(currentPassword, admin.passwordHash);
+  if (!valid) {
+    return { error: 'Current password is incorrect.' };
+  }
+
+  // Build update data
+  const updateData: { email?: string; passwordHash?: string } = {};
+
+  if (newEmail && newEmail !== admin.email) {
+    // Check if email is already taken by another admin
+    const existing = await prisma.adminUser.findUnique({ where: { email: newEmail } });
+    if (existing && existing.id !== admin.id) {
+      return { error: 'That email is already in use.' };
+    }
+    updateData.email = newEmail;
+  }
+
+  if (newPassword) {
+    if (newPassword.length < 6) {
+      return { error: 'New password must be at least 6 characters.' };
+    }
+    if (newPassword !== confirmPassword) {
+      return { error: 'New password and confirmation do not match.' };
+    }
+    updateData.passwordHash = await bcrypt.hash(newPassword, 10);
+  }
+
+  if (Object.keys(updateData).length === 0) {
+    return { error: 'No changes to save. Enter a new email or password.' };
+  }
+
+  await prisma.adminUser.update({
+    where: { id: admin.id },
+    data: updateData,
+  });
+
+  revalidatePath('/admin/dashboard/settings');
+
+  const changes: string[] = [];
+  if (updateData.email) changes.push('email');
+  if (updateData.passwordHash) changes.push('password');
+
+  return { success: `Admin ${changes.join(' and ')} updated successfully.` };
+}
+
