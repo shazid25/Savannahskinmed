@@ -21,8 +21,7 @@ const sections: NavSection[] = [
     heading: 'Content',
     items: [
       { href: '/admin/dashboard/content/site', label: 'Site & Footer', icon: '▦' },
-      { href: '/admin/dashboard/content/specials', label: 'Specials Page', icon: '★' },
-      { href: '/admin/dashboard/content/membership', label: 'Membership Promo', icon: '♦' },
+
     ],
   },
   {
