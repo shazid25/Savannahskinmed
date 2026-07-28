@@ -1,12 +1,9 @@
 import { prisma } from '@/lib/prisma';
-import { saveAllAction } from './actions';
 import AdminSpecialCard from '@/components/admin/AdminSpecialCard';
 import AddSpecialCardButton from '@/components/admin/AddSpecialCardButton';
 import SpecialsHeroUpload from './SpecialsHeroUpload';
 
 export const dynamic = 'force-dynamic';
-
-const SAVE_FORM_ID = 'specials-save';
 
 export default async function SpecialsContentPage() {
   let settings, cards;
@@ -61,16 +58,6 @@ export default async function SpecialsContentPage() {
           ))}
         </div>
       </section>
-
-      {/* Global Save */}
-      <form id={SAVE_FORM_ID} action={saveAllAction}>
-        <button
-          type="submit"
-          className="rounded-lg bg-navy px-6 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-navy-deep"
-        >
-          Save All Changes
-        </button>
-      </form>
     </div>
   );
 }

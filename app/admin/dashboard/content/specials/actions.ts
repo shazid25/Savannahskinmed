@@ -15,58 +15,66 @@ function toOrder(raw: FormDataEntryValue | null) {
 }
 
 // ---------------------------------------------------------------------------
-// Bulk save — hero/heading settings + every existing card + tier field on
-// the page, submitted together from the single "Save All Changes" button.
-// Every field below lives outside this form in the DOM and is associated
-// via the HTML `form="specials-save"` attribute (nested <form> elements
-// aren't valid HTML, and this is the standards-based way around it).
+// Save hero / heading settings only
 // ---------------------------------------------------------------------------
 
-export async function saveAllAction(formData: FormData) {
-  const cardIds = formData.getAll('cardIds').map(String);
+export async function saveHeroAction(formData: FormData) {
+  const get = (name: string) => String(formData.get(name) || '').trim();
+
+  await prisma.specialsPageSettings.upsert({
+    where: { id: 'main' },
+    update: {
+      heroTitle: get('heroTitle'),
+      heroIntro: get('heroIntro'),
+      heroImage: get('heroImage'),
+      heroImageAlt: get('heroImageAlt'),
+      offersHeading: get('offersHeading'),
+    },
+    create: {
+      id: 'main',
+      heroTitle: get('heroTitle'),
+      heroIntro: get('heroIntro'),
+      heroImage: get('heroImage'),
+      heroImageAlt: get('heroImageAlt'),
+      offersHeading: get('offersHeading'),
+    },
+  });
+
+  revalidateSpecialsPage();
+}
+
+// ---------------------------------------------------------------------------
+// Save a single card + its tiers
+// ---------------------------------------------------------------------------
+
+export async function saveSpecialCardAction(formData: FormData) {
+  const id = String(formData.get('cardId') || '');
+  if (!id) return;
+
+  const cardId = id;
   const tierIds = formData.getAll('tierIds').map(String);
 
   await prisma.$transaction([
-    prisma.specialsPageSettings.upsert({
-      where: { id: 'main' },
-      update: {
-        heroTitle: String(formData.get('heroTitle') || ''),
-        heroIntro: String(formData.get('heroIntro') || ''),
-        heroImage: String(formData.get('heroImage') || ''),
-        heroImageAlt: String(formData.get('heroImageAlt') || ''),
-        offersHeading: String(formData.get('offersHeading') || ''),
-      },
-      create: {
-        id: 'main',
-        heroTitle: String(formData.get('heroTitle') || ''),
-        heroIntro: String(formData.get('heroIntro') || ''),
-        heroImage: String(formData.get('heroImage') || ''),
-        heroImageAlt: String(formData.get('heroImageAlt') || ''),
-        offersHeading: String(formData.get('offersHeading') || ''),
+    prisma.specialCard.update({
+      where: { id: cardId },
+      data: {
+        image: String(formData.get('image') || ''),
+        imageAlt: String(formData.get('imageAlt') || ''),
+        title: String(formData.get('title') || '') || null,
+        headline: String(formData.get('headline') || '') || null,
+        description: String(formData.get('description') || '') || null,
+        cta: String(formData.get('cta') || 'Claim'),
+        sortOrder: toOrder(formData.get('sortOrder')),
+        isActive: formData.get('isActive') === 'on',
       },
     }),
-    ...cardIds.map((id) =>
-      prisma.specialCard.update({
-        where: { id },
-        data: {
-          image: String(formData.get(`card-image-${id}`) || ''),
-          imageAlt: String(formData.get(`card-imageAlt-${id}`) || ''),
-          title: String(formData.get(`card-title-${id}`) || '') || null,
-          headline: String(formData.get(`card-headline-${id}`) || '') || null,
-          description: String(formData.get(`card-description-${id}`) || '') || null,
-          cta: String(formData.get(`card-cta-${id}`) || 'Claim'),
-          sortOrder: toOrder(formData.get(`card-order-${id}`)),
-          isActive: formData.get(`card-active-${id}`) === 'on',
-        },
-      }),
-    ),
-    ...tierIds.map((id) =>
+    ...tierIds.map((tid) =>
       prisma.specialCardTier.update({
-        where: { id },
+        where: { id: tid },
         data: {
-          label: String(formData.get(`tier-label-${id}`) || ''),
-          detail: String(formData.get(`tier-detail-${id}`) || ''),
-          sortOrder: toOrder(formData.get(`tier-order-${id}`)),
+          label: String(formData.get(`tier-label-${tid}`) || ''),
+          detail: String(formData.get(`tier-detail-${tid}`) || ''),
+          sortOrder: toOrder(formData.get(`tier-order-${tid}`)),
         },
       }),
     ),
@@ -76,8 +84,7 @@ export async function saveAllAction(formData: FormData) {
 }
 
 // ---------------------------------------------------------------------------
-// Delete / create — each of these is its own small, self-contained <form>
-// (not sharing the bulk-save form), so plain field names are unambiguous.
+// Delete / create
 // ---------------------------------------------------------------------------
 
 export async function deleteSpecialCardAction(formData: FormData) {
